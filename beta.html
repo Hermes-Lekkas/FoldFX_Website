@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    document.documentElement.classList.add("js");
+    /* Boot language guard: if a non-English language is preferred, hide the body
+       until the translated dictionary has been applied (failsafe timeout in i18n.js). */
+    (function () {
+      var L = null;
+      try { L = new URLSearchParams(location.search).get("lang") || localStorage.getItem("foldfx-lang"); } catch (e) {}
+      if (!L) {
+        var c = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || "en"];
+        var codes = ["zh", "hi", "es", "fr", "ar", "bn", "pt", "ru", "ur", "id", "de", "ja", "mr", "te", "el"];
+        for (var i = 0; i < c.length; i++) {
+          var b = String(c[i]).toLowerCase().split("-")[0];
+          if (codes.indexOf(b) > -1) { L = b; break; }
+        }
+      }
+      if (L && L !== "en") document.documentElement.classList.add("fx-boot");
+    })();
+  </script>
+  <title data-i18n="meta.beta.title">FoldFX — Beta program</title>
+  <meta name="description" content="Download the FoldFX beta APK for Android foldables. A signed, obfuscated release build — sideload it in minutes and join the tester community." data-i18n-attr="content:meta.beta.desc">
+  <meta name="theme-color" content="#050506">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FoldFX">
+  <meta property="og:title" content="FoldFX — Beta program" data-i18n-attr="content:meta.beta.title">
+  <meta property="og:description" content="Get the FoldFX beta APK for Android foldables — signed, obfuscated, and verified with a SHA-256 checksum." data-i18n-attr="content:meta.beta.desc">
+  <meta property="og:image" content="assets/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png">
+  <link rel="touch-icon" sizes="180x180" href="assets/touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="FoldFX home" data-i18n-attr="aria-label:nav.home">
+        <img src="assets/foldfx-icon.png" alt="FoldFX app icon" width="34" height="34" data-i18n-attr="alt:brand.icon.alt">
+        <span class="brand-name">Fold<span class="brand-fx">FX</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation" data-i18n-attr="aria-label:nav.label">
+        <a href="index.html#demo" data-i18n="nav.demo">Demo</a>
+        <a href="index.html#features" data-i18n="nav.features">Features</a>
+        <a href="index.html#how" data-i18n="nav.how">How it works</a>
+        <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="beta.html" aria-current="page" data-i18n="nav.beta">Beta</a>
+        <a href="privacy.html" data-i18n="nav.privacy">Privacy</a>
+        <a href="terms.html" data-i18n="nav.terms">Terms</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang" id="lang">
+          <button type="button" class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" data-i18n-attr="aria-label:lang.label,title:lang.label">
+            <svg class="lang-globe" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.7 2.7 4.1 5.7 4.1 9s-1.4 6.3-4.1 9c-2.7-2.7-4.1-5.7-4.1-9S9.3 5.7 12 3z"/></svg>
+            <span id="langBtnLabel">English</span>
+            <svg class="lang-chev" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="lang-menu" id="langMenu" role="listbox" data-i18n-attr="aria-label:lang.label" hidden></div>
+        </div>
+        <a class="btn btn-primary btn-sm" href="index.html#get" data-i18n="nav.get">Get the app</a>
+        <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false" data-i18n-attr="aria-label:nav.menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="legal beta">
+    <div class="container container-narrow">
+      <header class="legal-head">
+        <span class="eyebrow" data-i18n="beta.eyebrow">Closed beta</span>
+        <h1 data-i18n="beta.h1">Get the FoldFX beta</h1>
+        <p class="legal-meta" data-i18n="beta.meta">Direct APK download · Android 12+ · Foldable device recommended</p>
+      </header>
+
+      <article class="legal-body">
+        <p data-i18n="beta.p">FoldFX is in closed beta, and the transition you saw in the demo is the real thing. Sideloading takes about a minute: download the APK below, let your browser install it, and you are in. The build is hardened and checksum-verified — and testers can talk to the developer and to each other at the bottom of this page.</p>
+
+        <!-- ============ DOWNLOAD CARD ============ -->
+        <section class="beta-dl-card">
+          <a class="btn btn-primary btn-lg beta-dl-btn" id="betaDlBtn" href="downloads/FoldFX-beta.apk" download="FoldFX-beta.apk" aria-disabled="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4.5 20h15"/></svg>
+            <span data-i18n="beta.dl">Download the beta APK</span>
+          </a>
+          <p class="beta-dl-soon" id="betaDlSoon" data-i18n="beta.dl.soon">The first beta build is uploading — check back shortly.</p>
+          <p class="beta-dl-note">
+            <span data-i18n="beta.dl.note">Signed release build · shrunk and obfuscated with R8</span>
+            <span class="beta-file">FoldFX-beta.apk · 1.0 · beta 1</span>
+          </p>
+          <p class="beta-checksum" id="betaChecksumRow" hidden data-i18n-html="beta.checksum.hint">Every beta ships with a SHA-256 checksum in <a href="downloads/checksums.txt">checksums.txt</a> — verify the file before installing.</p>
+        </section>
+
+        <!-- ============ INSTALL ============ -->
+        <section>
+          <h2 data-i18n="beta.install.h3">Install in four steps</h2>
+          <ol class="beta-steps">
+            <li data-i18n="beta.step1">Tap the download button above and wait for the APK to finish downloading.</li>
+            <li data-i18n="beta.step2">Open the file when your phone asks — or find it later in your Downloads folder.</li>
+            <li data-i18n="beta.step3">If Android warns you, allow installs from your browser (Settings → Install unknown apps). That prompt appears for every sideloaded app, not just FoldFX.</li>
+            <li data-i18n="beta.step4">Tap Install, open FoldFX, and tune the transition with the on-screen slider.</li>
+          </ol>
+          <p class="beta-warn" data-i18n="beta.warn">Only download FoldFX from this page. If your browser or antivirus flags a sideloaded APK, that is expected — it happens because the beta is not distributed through the Play Store, not because anything is wrong.</p>
+        </section>
+
+        <!-- ============ ABOUT THE BUILD ============ -->
+        <section>
+          <h2 data-i18n="beta.about.h3">About the build</h2>
+          <p data-i18n="beta.about.p">This beta is a signed release build — not a debug APK. The code is shrunk and obfuscated with R8 in full mode: classes and methods are renamed to meaningless short names, the package structure is flattened, unused code and resources are stripped, and debug logging is compiled out. The APK contains nothing that can be read back into the original source, and the mapping file that could undo the renaming exists only on the developer's side — it is never published.</p>
+        </section>
+
+        <!-- ============ TESTER TALK ============ -->
+        <section class="beta-talk">
+          <h2 data-i18n="beta.talk.h3">Tester talk</h2>
+          <p data-i18n="beta.talk.p">Report what you see, share tuning ideas, or ask other testers questions — the conversation lives here, right on this page.</p>
+          <div class="beta-giscus" id="giscusThread" aria-label="Beta comments"></div>
+          <p class="beta-giscus-wait" id="giscusWait" hidden data-i18n="beta.talk.wait">The community board opens together with the first public beta build.</p>
+          <p class="beta-private" data-i18n-html="beta.private">Found a crash or a security issue? Please <a href="mailto:FoldFX@protonmail.com">email it privately</a> instead of posting it publicly — thank you.</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <img src="assets/foldfx-icon.png" alt="" width="30" height="30">
+            <span class="brand-name">Fold<span class="brand-fx">FX</span></span>
+          </a>
+          <p data-i18n="foot.tagline">Fluid, hinge-driven fold transitions for Android foldables. Built from scratch with Kotlin and Jetpack Compose.</p>
+        </div>
+        <nav class="footer-col" aria-label="Explore" data-i18n-attr="aria-label:foot.explore">
+          <h4 data-i18n="foot.explore">Explore</h4>
+          <a href="index.html#demo" data-i18n="foot.demo">Live demo</a>
+          <a href="index.html#features" data-i18n="foot.features">Features</a>
+          <a href="index.html#how" data-i18n="foot.how">How it works</a>
+          <a href="index.html#faq" data-i18n="foot.faq">FAQ</a>
+        </nav>
+        <nav class="footer-col" aria-label="Project" data-i18n-attr="aria-label:foot.project">
+          <h4 data-i18n="foot.project">Project</h4>
+          <a href="index.html#tech" data-i18n="foot.tech">Tech stack</a>
+          <a href="index.html#honesty" data-i18n="foot.honest">Honest by design</a>
+          <a href="beta.html" aria-current="page" data-i18n="foot.beta">Beta program</a>
+          <a href="index.html#get" data-i18n="foot.get">Get the app</a>
+        </nav>
+        <nav class="footer-col" aria-label="Legal" data-i18n-attr="aria-label:foot.legal">
+          <h4 data-i18n="foot.legal">Legal</h4>
+          <a href="privacy.html" data-i18n="foot.privacy">Privacy Policy</a>
+          <a href="terms.html" data-i18n="foot.terms">Terms of Service</a>
+          <a href="mailto:FoldFX@protonmail.com" data-i18n="foot.contact">Contact support</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p data-i18n="foot.rights">© <span id="year">2026</span> Hermes Lekkas. All rights reserved.</p>
+        <p class="footer-disclaimer" data-i18n="foot.disclaimer">FoldFX is an independent project. All third-party product names, logos and brands mentioned are the property of their respective owners and are used for identification purposes only.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/i18n/languages.js"></script>
+  <script src="js/i18n/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      /* ---------- beta APK availability ----------
+         The download activates the moment downloads/FoldFX-beta.apk exists on
+         the deployed site; until then testers see the "uploading" state and
+         never hit a dead link. */
+      var btn = document.getElementById("betaDlBtn");
+      var soon = document.getElementById("betaDlSoon");
+      var row = document.getElementById("betaChecksumRow");
+
+      function gate(e) {
+        if (btn && btn.getAttribute("aria-disabled") === "true") e.preventDefault();
+      }
+      if (btn) btn.addEventListener("click", gate);
+
+      function state(ready) {
+        if (!btn) return;
+        if (ready) {
+          btn.removeAttribute("aria-disabled");
+          if (soon) soon.hidden = true;
+          if (row) row.hidden = false;
+        } else {
+          btn.setAttribute("aria-disabled", "true");
+          if (soon) soon.hidden = false;
+          if (row) row.hidden = true;
+        }
+      }
+
+      try {
+        fetch("downloads/FoldFX-beta.apk", { method: "HEAD" })
+          .then(function (r) { state(r.ok); })
+          .catch(function () { state(false); });
+      } catch (e) { state(false); }
+
+      /* ---------- tester talk (giscus) ----------
+         Conversations are powered by giscus (GitHub Discussions under the
+         hood): threaded replies, reactions, no tracking, no ads, and the
+         developer moderates every thread. To finish setup:
+           1) Repo Settings → General → Features → check "Discussions"
+           2) Install https://github.com/apps/giscus on the website repo
+           3) Paste the "Announcements" category ID below (get it from
+              https://giscus.app by entering the repo and picking the
+              category). The board activates itself once the ID is set. */
+      var GISCUS = {
+        repo: "Hermes-Lekkas/FoldFX_Website",
+        repoId: "R_kgDOUbdb3A",
+        category: "Announcements",
+        categoryId: "DIC_kwDO_REPLACE_ME" /* ← replace to activate */
+      };
+
+      /* giscus speaks most of the site's languages; the rest fall back. */
+      var GISCUS_LANG = {
+        en: "en", es: "es", fr: "fr", de: "de", ar: "ar", bn: "bn",
+        ru: "ru", pt: "pt", id: "id", ja: "ja", zh: "zh-CN", hi: "hi",
+        el: "el", ur: "en", mr: "en", te: "en"
+      };
+
+      var thread = document.getElementById("giscusThread");
+      var wait = document.getElementById("giscusWait");
+
+      function giscusLang(code) { return GISCUS_LANG[code] || "en"; }
+      function giscusReady() {
+        return GISCUS.categoryId && GISCUS.categoryId.indexOf("REPLACE") === -1;
+      }
+
+      function loadGiscus() {
+        if (!thread) return;
+        if (!giscusReady()) { if (wait) wait.hidden = false; return; }
+        if (wait) wait.hidden = true;
+        thread.innerHTML = "";
+        var s = document.createElement("script");
+        s.src = "https://giscus.app/client.js";
+        s.async = true;
+        s.crossOrigin = "anonymous";
+        s.setAttribute("data-repo", GISCUS.repo);
+        s.setAttribute("data-repo-id", GISCUS.repoId);
+        s.setAttribute("data-category", GISCUS.category);
+        s.setAttribute("data-category-id", GISCUS.categoryId);
+        s.setAttribute("data-mapping", "pathname");
+        s.setAttribute("data-strict", "1");
+        s.setAttribute("data-reactions-enabled", "1");
+        s.setAttribute("data-emit-metadata", "0");
+        s.setAttribute("data-input-position", "top");
+        s.setAttribute("data-theme", "transparent_dark");
+        s.setAttribute("data-lang", giscusLang(window.FXLang ? window.FXLang.get() : "en"));
+        s.setAttribute("data-loading", "lazy");
+        thread.appendChild(s);
+      }
+
+      if (window.FXLang) window.FXLang.onChange(function () { loadGiscus(); });
+      loadGiscus();
+    })();
+  </script>
+</body>
+</html>
