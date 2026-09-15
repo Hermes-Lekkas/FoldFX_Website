@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- The notify form posts cross-origin to its delivery service; this keeps a
+       full https Referer so the service accepts the request from the live site. -->
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <script>
+    document.documentElement.classList.add("js");
+    /* Boot language guard: if a non-English language is preferred, hide the body
+       until the translated dictionary has been applied (failsafe timeout in i18n.js). */
+    (function () {
+      var L = null;
+      try { L = new URLSearchParams(location.search).get("lang") || localStorage.getItem("foldfx-lang"); } catch (e) {}
+      if (!L) {
+        var c = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || "en"];
+        var codes = ["zh", "hi", "es", "fr", "ar", "bn", "pt", "ru", "ur", "id", "de", "ja", "mr", "te", "el"];
+        for (var i = 0; i < c.length; i++) {
+          var b = String(c[i]).toLowerCase().split("-")[0];
+          if (codes.indexOf(b) > -1) { L = b; break; }
+        }
+      }
+      if (L && L !== "en") document.documentElement.classList.add("fx-boot");
+    })();
+  </script>
+  <title data-i18n="meta.index.title">FoldFX — Fluid fold transitions for Android foldables</title>
+  <meta name="description" content="FoldFX recreates the fluid, hinge-driven fold transition on Android foldables. Angle-driven blending, cinematic blur and a soft light sweep — powered by your phone's real hinge sensor." data-i18n-attr="content:meta.index.desc">
+  <meta name="theme-color" content="#050506">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FoldFX">
+  <meta property="og:title" content="FoldFX — Fluid fold transitions for Android foldables" data-i18n-attr="content:og.index.title">
+  <meta property="og:description" content="The fold, made fluid. FoldFX blends your cover screen into your main screen with a cinematic, hinge-driven transition." data-i18n-attr="content:og.index.desc">
+  <meta property="og:image" content="assets/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="FoldFX — The fold, made fluid." data-i18n-attr="content:og.image.alt">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="assets/og-banner.png">
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png">
+  <link rel="touch-icon" sizes="180x180" href="assets/touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "FoldFX",
+    "operatingSystem": "Android 12+",
+    "applicationCategory": "PersonalizationApp",
+    "description": "FoldFX recreates the fluid, hinge-driven fold transition on Android foldables using the real hinge-angle sensor.",
+    "author": { "@type": "Person", "name": "Hermes Lekkas" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "softwareVersion": "1.0"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- SVG icon sprite for the simulated launcher UI -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm3 2a1 1 0 0 0 0 2h4a1 1 0 0 0 0-2h-4z"/></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24"><path d="M9 3h6l1.5 2H20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3.5L9 3zm3 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z"/></symbol>
+      <symbol id="i-compass" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm4.5 5.5-6 2.5-2.5 6 6-2.5 2.5-6zM12 11a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></symbol>
+      <symbol id="i-photos" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm2 12h12l-4-6-3 4-2-2-3 4zm2-9.5A1.5 1.5 0 1 0 8 9.5 1.5 1.5 0 0 0 8 6.5z"/></symbol>
+      <symbol id="i-music" viewBox="0 0 24 24"><path d="M20 3v12.5a3.5 3.5 0 1 1-2-3.16V7l-8 2v9.5a3.5 3.5 0 1 1-2-3.16V7l12-4z"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm1 5h-2v6l5 3 1-1.7-4-2.3V7z"/></symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm8.9 5.6.1-1.6-.1-1.6 2-1.5-1.9-3.3-2.4.8a8 8 0 0 0-2.7-1.6L15.5 2h-3.7l-.4 2.8a8 8 0 0 0-2.7 1.6l-2.4-.8L4.4 8.9l2 1.5a8.2 8.2 0 0 0 0 3.2l-2 1.5 1.9 3.3 2.4-.8a8 8 0 0 0 2.7 1.6l.4 2.8h3.7l.4-2.8a8 8 0 0 0 2.7-1.6l2.4.8 1.9-3.3-2-1.5z"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="FoldFX home" data-i18n-attr="aria-label:nav.home">
+        <img src="assets/foldfx-icon.png" alt="FoldFX app icon" width="34" height="34" data-i18n-attr="alt:brand.icon.alt">
+        <span class="brand-name">Fold<span class="brand-fx">FX</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation" data-i18n-attr="aria-label:nav.label">
+        <a href="#demo" data-i18n="nav.demo">Demo</a>
+        <a href="#features" data-i18n="nav.features">Features</a>
+        <a href="#how" data-i18n="nav.how">How it works</a>
+        <a href="#tech" data-i18n="nav.tech">Tech</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="privacy.html" data-i18n="nav.privacy">Privacy</a>
+        <a href="terms.html" data-i18n="nav.terms">Terms</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang" id="lang">
+          <button type="button" class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" data-i18n-attr="aria-label:lang.label,title:lang.label">
+            <svg class="lang-globe" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.7 2.7 4.1 5.7 4.1 9s-1.4 6.3-4.1 9c-2.7-2.7-4.1-5.7-4.1-9S9.3 5.7 12 3z"/></svg>
+            <span id="langBtnLabel">English</span>
+            <svg class="lang-chev" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="lang-menu" id="langMenu" role="listbox" data-i18n-attr="aria-label:lang.label" hidden></div>
+        </div>
+        <a class="btn btn-primary btn-sm" href="#get" data-i18n="nav.get">Get the app</a>
+        <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false" data-i18n-attr="aria-label:nav.menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="pill" data-i18n="hero.pill">For Android foldables &middot; Android 12+</span>
+          <h1><span data-i18n="hero.h1a">The fold,</span><br><span class="grad-text" data-i18n="hero.h1b">made fluid.</span></h1>
+          <p class="hero-sub" data-i18n="hero.sub">FoldFX recreates the fluid, hinge-driven screen transition your foldable deserves. Instead of hard-cutting between cover and main layouts, your interface visibly blurs, scales and reshapes itself as the phone physically opens — tracking the real speed of your hand.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#get" data-i18n="hero.get">Get FoldFX</a>
+            <a class="btn btn-ghost" href="#demo" data-i18n="hero.try">Try the live demo</a>
+          </div>
+          <ul class="hero-facts" aria-label="Quick facts" data-i18n-attr="aria-label:hero.facts">
+            <li><strong data-i18n="hero.f1t">Real hinge sensor</strong><span data-i18n="hero.f1s">with graceful fallback</span></li>
+            <li><strong data-i18n="hero.f2t">Angle-driven</strong><span data-i18n="hero.f2s">no canned animation</span></li>
+            <li><strong data-i18n="hero.f3t">Private by design</strong><span data-i18n="hero.f3s">no data collected</span></li>
+          </ul>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="icon-stage">
+            <img class="hero-icon" src="assets/foldfx-icon-1024.png" alt="FoldFX app icon — a silver folded ribbon on a dark rounded square" width="380" height="380" data-i18n-attr="alt:hero.icon.alt">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INTERACTIVE DEMO ============ -->
+    <section class="section demo" id="demo">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="demo.eyebrow">Interactive preview</span>
+          <h2 data-i18n="demo.h2">Drag the hinge. Watch it fold.</h2>
+          <p data-i18n="demo.p">This is a live web replica of FoldFX's core transition — the same angle-driven blend, with a gradient blur that blooms out of the hinge, a motion smear that tracks the speed of your hand, and a diagonal light sweep. Fold slowly and it eases through slowly; flick it open and it smears through fast.</p>
+        </div>
+        <div class="demo-stage reveal">
+          <div class="fold-scene" id="foldScene">
+            <div class="fold-scaler" id="foldScaler">
+              <div class="device3d" id="device3d" aria-hidden="true">
+                <!-- Right (fixed) half: right section of the main display -->
+                <div class="half half-right">
+                  <div class="face face-inner">
+                    <div class="ui ui-main-right" id="uiMainRight">
+                      <div class="search-pill"><span class="pill-dot"></span><span class="pill-line"></span></div>
+                      <div class="tile-grid r-grid">
+                        <div class="tile t-compass"><svg><use href="#i-compass"/></svg></div>
+                        <div class="tile t-music"><svg><use href="#i-music"/></svg></div>
+                        <div class="tile t-clock"><svg><use href="#i-clock"/></svg></div>
+                        <div class="tile t-settings"><svg><use href="#i-settings"/></svg></div>
+                        <div class="tile t-photos"><svg><use href="#i-photos"/></svg></div>
+                        <div class="tile t-camera"><svg><use href="#i-camera"/></svg></div>
+                      </div>
+                      <div class="page-dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+                      <div class="dock">
+                        <div class="tile tile-dock t-phone"><svg><use href="#i-phone"/></svg></div>
+                        <div class="tile tile-dock t-chat"><svg><use href="#i-chat"/></svg></div>
+                        <div class="tile tile-dock t-compass"><svg><use href="#i-compass"/></svg></div>
+                        <div class="tile tile-dock t-camera"><svg><use href="#i-camera"/></svg></div>
+                      </div>
+                    </div>
+                    <div class="glass-off" id="offRight"></div>
+                    <div class="cast-shadow" id="castShadowR"></div>
+                    <div class="blur-veil bv-mid" id="bvMidR"></div>
+                    <div class="blur-veil bv-edge" id="bvEdgeR"></div>
+                    <div class="face-sweep" id="sweepRight"></div>
+                  </div>
+                </div>
+                <!-- Left (folding) half: cover display outside, left section of main display inside -->
+                <div class="half half-left" id="halfLeft">
+                  <div class="face face-inner">
+                    <div class="ui ui-main-left" id="uiMainLeft">
+                      <div class="clock-block">
+                        <div class="big-time" id="mainTime">21:47</div>
+                        <div class="big-date" id="mainDate">Sat, Sep 12</div>
+                      </div>
+                      <div class="widget-card">
+                        <span class="w-sun"></span>
+                        <span class="w-rows"><i></i><i class="short"></i></span>
+                      </div>
+                      <div class="tile-grid l-grid">
+                        <div class="tile t-phone"><svg><use href="#i-phone"/></svg></div>
+                        <div class="tile t-chat"><svg><use href="#i-chat"/></svg></div>
+                        <div class="tile t-camera"><svg><use href="#i-camera"/></svg></div>
+                        <div class="tile t-photos"><svg><use href="#i-photos"/></svg></div>
+                      </div>
+                    </div>
+                    <div class="glass-off" id="offLeft"></div>
+                    <div class="blur-veil bv-mid" id="bvMidL"></div>
+                    <div class="blur-veil bv-edge" id="bvEdgeL"></div>
+                    <div class="face-sweep" id="sweepLeft"></div>
+                  </div>
+                  <div class="face face-cover">
+                    <div class="ui ui-cover" id="uiCover">
+                      <div class="cov-status"><span id="covTime">21:47</span><span class="batt"><i></i></span></div>
+                      <div class="punch"></div>
+                      <div class="clock-block cover-clock">
+                        <div class="big-time cov-time" id="coverTime">21:47</div>
+                        <div class="big-date" id="coverDate">Sat, Sep 12</div>
+                      </div>
+                      <div class="widget-card cov-widget">
+                        <span class="w-sun"></span>
+                        <span class="w-rows"><i></i><i class="short"></i></span>
+                      </div>
+                      <div class="cov-quick">
+                        <span class="q-btn"><svg><use href="#i-compass"/></svg></span>
+                        <span class="q-btn"><svg><use href="#i-camera"/></svg></span>
+                      </div>
+                    </div>
+                    <div class="glass-off" id="offCover"></div>
+                    <div class="blur-veil bv-mid" id="bvMidC"></div>
+                    <div class="blur-veil bv-edge" id="bvEdgeC"></div>
+                  </div>
+                </div>
+                <div class="hinge-core" id="hingeCore"></div>
+              </div>
+              <div class="device-shadow" id="deviceShadow"></div>
+            </div>
+          </div>
+
+          <div class="demo-controls">
+            <button class="btn btn-ghost btn-sm" id="autoBtn" aria-pressed="false">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              <span id="autoBtnLabel" data-i18n="demo.auto">Auto demo</span>
+            </button>
+            <div class="slider-wrap">
+              <input type="range" id="angle" min="0" max="180" value="0" step="1" aria-label="Fold angle in degrees" data-i18n-attr="aria-label:demo.slider">
+              <div class="slider-scale" aria-hidden="true"><span data-i18n="demo.scale0">0° closed</span><span>90°</span><span data-i18n="demo.scale180">180° open</span></div>
+            </div>
+            <div class="angle-readout" aria-live="polite">
+              <strong><span id="angleVal">0</span>°</strong>
+              <span id="foldLabel" data-i18n="demo.state.closed">Closed · cover screen</span>
+            </div>
+            <div class="haptic-badge" id="haptic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M4 9h3l4-4v14l-4-4H4V9zm11 .1a4 4 0 0 1 0 5.8V9.1zm2.8-2.8a8 8 0 0 1 0 11.4V6.3z"/></svg>
+              <span data-i18n="demo.haptic">haptic tick</span>
+            </div>
+          </div>
+          <p class="demo-drag-hint" data-i18n="demo.drag">Tip: you can also grab the phone itself and drag it open.</p>
+          <p class="demo-note" data-i18n="demo.note">A live 3D simulation of a book-style foldable running the FoldFX transition: the cover display hands off to the main display through a hinge-weighted gradient blur, a velocity-driven motion smear and a light sweep, all driven by the fold angle. On device, that angle comes from the real hinge sensor; the slider mirrors the debug tool built into the app.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MEDIA / REAL SCREENSHOTS ============ -->
+    <section class="section media" id="media">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="media.eyebrow">Straight from the app</span>
+          <h2 data-i18n="media.h2">The real thing</h2>
+          <p data-i18n="media.p">Real screens captured from FoldFX running on a device — the live-telemetry home and the transition viewport with its manual angle override — alongside the launch marketing render. Tap any image to view it full size.</p>
+        </div>
+        <div class="media-grid reveal">
+          <figure class="media-item media-render">
+            <button type="button" class="media-zoom" data-full="assets/marketing-render.jpg" data-i18n-attr="aria-label:media.render.cap">
+              <img src="assets/marketing-render.jpg" alt="Marketing render of hands holding a half-open foldable while the cover screen blurs into the main display" width="1172" height="1342" loading="lazy" data-i18n-attr="alt:media.render.alt">
+            </button>
+            <figcaption><span data-i18n="media.render.cap">Launch marketing render — the cover screen blurring into the main display mid-fold</span></figcaption>
+          </figure>
+          <figure class="media-item media-shot">
+            <button type="button" class="media-zoom" data-full="assets/app-shot-home.png" data-i18n-attr="aria-label:media.shot1.cap">
+              <img src="assets/app-shot-home.png" alt="FoldFX app home screen showing the current fold angle, active source and live wallpaper options" width="1080" height="2400" loading="lazy" data-i18n-attr="alt:media.shot1.alt">
+            </button>
+            <figcaption><span data-i18n="media.shot1.cap">App home — live fold telemetry and the Live Wallpaper companion</span></figcaption>
+          </figure>
+          <figure class="media-item media-shot">
+            <button type="button" class="media-zoom" data-full="assets/app-shot-preview.png" data-i18n-attr="aria-label:media.shot2.cap">
+              <img src="assets/app-shot-preview.png" alt="FoldFX transition viewport showing a simulated launcher with the manual override slider from 0 to 180 degrees" width="1080" height="2400" loading="lazy" data-i18n-attr="alt:media.shot2.alt">
+            </button>
+            <figcaption><span data-i18n="media.shot2.cap">Transition viewport — reveal window, manual override and quick presets</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="feat.eyebrow">Features</span>
+          <h2 data-i18n="feat.h2">Everything a fold transition should be</h2>
+          <p data-i18n="feat.p">FoldFX is built around a single, continuous value — the fold angle — and layers physical effects on top of it, so the result feels like glass moving with your hand rather than two screens being swapped.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="card reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-clock"/></svg></div>
+            <h3 data-i18n="feat.1t">True hinge-angle support</h3>
+            <p data-i18n-html="feat.1p">Reads <code>Sensor.TYPE_HINGE_ANGLE</code> continuously where the device exposes one, and falls back gracefully to Android's fold-state API where it doesn't — so the effect works across foldable lineups.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-photos"/></svg></div>
+            <h3 data-i18n="feat.2t">Continuous blending</h3>
+            <p data-i18n="feat.2p">The cover and main layouts don't snap at a fixed threshold. A single angle value continuously blends between the compact single-column layout and the expanded grid, in both directions.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-music"/></svg></div>
+            <h3 data-i18n="feat.3t">Physical mid-fold effects</h3>
+            <p data-i18n="feat.3p">A gradient blur that blooms out of the hinge and peaks partway through the fold, a motion smear that follows the speed of your hand, a slight scale-up and a soft diagonal light sweep ride along mid-transition, so it reads as glassy and physical — never like a hard cut.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg></div>
+            <h3 data-i18n="feat.4t">Tracks your hand</h3>
+            <p data-i18n="feat.4p">Because the animation is driven directly by the sensor, it follows the actual speed of your gesture. Fold slowly and it eases through slowly; flick it open and it snaps through fast.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-chat"/></svg></div>
+            <h3 data-i18n="feat.5t">Haptic midpoint tick</h3>
+            <p data-i18n="feat.5p">A single, subtle haptic tick fires at the transition's midpoint — once per gesture — giving the fold a satisfying tactile "click" right as the interface changes sides.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24"><use href="#i-settings"/></svg></div>
+            <h3 data-i18n="feat.6t">Tunable &amp; persistent</h3>
+            <p data-i18n="feat.6p">Adjust the reveal window (which angles trigger the transition) and the blur strength to taste. Settings persist across restarts via DataStore preferences, and an on-screen debug slider lets you tune without folding.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="section how" id="how">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="how.eyebrow">Under the hinge</span>
+          <h2 data-i18n="how.h2">One angle value. Everything follows.</h2>
+          <p data-i18n="how.p">The whole effect is a pipeline from hardware to pixels, rebuilt from scratch in Kotlin — an original implementation of the idea, not a port of anyone's code or assets.</p>
+        </div>
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step-num">01</span>
+            <h3 data-i18n="how.1t">Sense</h3>
+            <p data-i18n-html="how.1p">Jetpack WindowManager watches fold state, while <code>Sensor.TYPE_HINGE_ANGLE</code> streams the physical hinge angle in real time as the phone opens and closes.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">02</span>
+            <h3 data-i18n="how.2t">Blend</h3>
+            <p data-i18n="how.2p">The raw angle is mapped through the adjustable reveal window and used to continuously cross-blend a compact cover layout into the expanded main layout — no fixed cut-off point.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">03</span>
+            <h3 data-i18n="how.3t">Effects</h3>
+            <p data-i18n="how.3p">A hinge-weighted gradient blur peaks mid-fold, content compresses gently into the crease, and a soft diagonal light sweep glides across — all weighted by a sine curve so the middle of the fold feels the most cinematic.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">04</span>
+            <h3 data-i18n="how.4t">Feel</h3>
+            <p data-i18n="how.4p">A single haptic tick marks the midpoint — once per gesture — while DataStore keeps your reveal window and blur strength exactly where you left them.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ REALITY CHECK ============ -->
+    <section class="section" id="honesty">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="honest.eyebrow">Honest by design</span>
+          <h2 data-i18n="honest.h2">What FoldFX is — and what it isn't</h2>
+          <p data-i18n="honest.p">No marketing fog. Here's exactly where the effect lives and what it can and cannot touch on your device.</p>
+        </div>
+        <div class="split">
+          <div class="panel reveal">
+            <h3 class="ok-title" data-i18n="honest.yest">✓ What it is</h3>
+            <ul class="checklist">
+              <li data-i18n="honest.y1">A from-scratch Android implementation of the fluid, hinge-driven fold transition that wowed everyone when flagship book-style foldables arrived in September 2026</li>
+              <li data-i18n="honest.y2">A live, sensor-driven demo of the technique: blending two layouts using one continuous angle value</li>
+              <li data-i18n="honest.y3">An homage built with original code, original names and original assets — a generic animation approach, not anyone's proprietary design</li>
+              <li data-i18n="honest.y4">A base that can grow into a live wallpaper or custom home-screen launcher in later phases</li>
+            </ul>
+          </div>
+          <div class="panel reveal">
+            <h3 class="no-title" data-i18n="honest.not">✕ What it isn't</h3>
+            <ul class="checklist checklist-no">
+              <li data-i18n-html="honest.n1">Not a system-level replacement — it can't change how <em>other</em> apps transition when you fold; that's a privilege the operating system reserves for itself on stock Android</li>
+              <li data-i18n="honest.n2">Not affiliated with, endorsed by, or derived from any device manufacturer in any way</li>
+              <li data-i18n="honest.n3">Not a canned GIF-style animation — the motion is generated live from your hinge sensor</li>
+              <li data-i18n="honest.n4">Not a data collector — it needs no account and phones nothing home</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TECH ============ -->
+    <section class="section tech" id="tech">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="tech.eyebrow">Tech stack</span>
+          <h2 data-i18n="tech.h2">Modern Android, end to end</h2>
+          <p data-i18n="tech.p">Built with the current generation of Android tooling, targeting the newest foldable APIs while staying compatible with devices running Android 12 and later.</p>
+        </div>
+        <div class="tech-grid">
+          <div class="tech-card reveal"><h4 data-i18n="tech.1h">Language &amp; UI</h4><p class="tech-items"><span>Kotlin</span><span>Jetpack Compose</span><span>Material 3</span></p></div>
+          <div class="tech-card reveal"><h4 data-i18n="tech.2h">Foldable APIs</h4><p class="tech-items"><span>androidx.window</span><span>Sensor.TYPE_HINGE_ANGLE</span><span data-i18n="tech.2c">Fold-state fallback</span></p></div>
+          <div class="tech-card reveal"><h4 data-i18n="tech.3h">Persistence</h4><p class="tech-items"><span>DataStore Preferences</span><span data-i18n="tech.3c">Persistent settings</span></p></div>
+          <div class="tech-card reveal"><h4 data-i18n="tech.4h">Requirements</h4><p class="tech-items"><span>Android 12+</span><span data-i18n="tech.4b">Foldable device recommended</span><span data-i18n="tech.4c">Version 1.0</span></p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+      <div class="container container-narrow">
+        <div class="section-head reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2 data-i18n="faq.h2">Questions, answered</h2>
+        </div>
+        <div class="faq-list reveal">
+          <details class="faq">
+            <summary data-i18n="faq.1q">Will FoldFX change how every app animates when I fold my phone?</summary>
+            <p data-i18n="faq.1a">No — and no third-party app can. Modifying system-wide transitions is an OS/OEM-level privilege on stock Android. FoldFX demonstrates and perfects the effect inside its own interface, built from scratch, and can extend into a live wallpaper or launcher in later phases.</p>
+          </details>
+          <details class="faq">
+            <summary data-i18n="faq.2q">Does my phone need a hinge-angle sensor?</summary>
+            <p data-i18n-html="faq.2a">It helps, but it isn't required. On devices that expose <code>Sensor.TYPE_HINGE_ANGLE</code>, FoldFX uses the real continuous angle. Where the sensor isn't available, it falls back to an approximation derived from Android's fold-state API, so the transition still works — just with fewer intermediate steps.</p>
+          </details>
+          <details class="faq">
+            <summary data-i18n="faq.3q">Which devices are supported?</summary>
+            <p data-i18n="faq.3a">FoldFX requires Android 12 (API 31) or newer and is designed for foldable phones — book-style and flip-style. On non-foldable devices you can still experience and tune the full effect using the built-in on-screen debug slider.</p>
+          </details>
+          <details class="faq">
+            <summary data-i18n="faq.4q">What can I customize?</summary>
+            <p data-i18n="faq.4a">The "reveal window" — which range of angles drives the transition — and the blur strength are both adjustable in-app and saved persistently. The on-screen debug slider lets you rehearse the effect without physically folding the phone.</p>
+          </details>
+          <details class="faq">
+            <summary data-i18n="faq.5q">Is FoldFX affiliated with any device maker?</summary>
+            <p data-i18n="faq.5a">No. FoldFX is an independent homage to a UI technique. It's built with original Kotlin code, original names and original assets — the underlying idea of blending two layouts with a live angle value is a generic animation approach, not proprietary technology. FoldFX is not endorsed by or affiliated with any device manufacturer or platform vendor.</p>
+          </details>
+          <details class="faq">
+            <summary data-i18n="faq.6q">Does it collect my data?</summary>
+            <p data-i18n-html="faq.6a">No. Hinge angles and settings are processed and stored entirely on your device. FoldFX has no accounts, no analytics and no ads. See the <a href="privacy.html">Privacy Policy</a> for the full detail.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT'S NEW ============ -->
+    <section class="section whatsnew" id="whatsnew">
+      <div class="container">
+        <div class="news-card reveal">
+          <div class="news-head">
+            <span class="eyebrow" data-i18n="news.eyebrow">What's new</span>
+            <span class="news-ver" data-i18n="news.ver">Version 1.0 &middot; Initial release</span>
+          </div>
+          <ul class="news-list">
+            <li data-i18n="news.1">Live, angle-driven fold transition — gradient blur, motion smear and a light sweep synced to the real hinge sensor</li>
+            <li data-i18n="news.2">Live Wallpaper companion: preview, configure and apply the transition to your home screen</li>
+            <li data-i18n="news.3">Manual override slider with quick presets, so any angle can be rehearsed without folding</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COMING SOON ============ -->
+    <section class="section get" id="get">
+      <div class="container">
+        <div class="get-panel reveal">
+          <div class="get-aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="get-inner">
+            <div class="get-badge">
+              <i class="get-pulse" aria-hidden="true"></i>
+              <span data-i18n="get.soon">Coming soon</span>
+            </div>
+            <div class="get-icon-wrap">
+              <i class="get-halo" aria-hidden="true"></i>
+              <img src="assets/foldfx-icon.png" alt="" width="104" height="104" class="get-icon">
+            </div>
+            <h2 class="grad-text" data-i18n="get.h2">The fold, soon in your hands.</h2>
+            <p class="get-sub" data-i18n="get.p">FoldFX is in the final stretch before its store debut. The live demo above is the real transition — and the store listing goes live at launch.</p>
+            <div class="get-actions">
+              <span class="btn btn-store btn-lg" aria-disabled="true" title="Link goes live at launch" data-i18n-attr="title:get.title">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M4 3.5v17c0 .4.45.65.8.43l13.9-8.5a.5.5 0 0 0 0-.86L4.8 3.07a.5.5 0 0 0-.8.43z"/></svg>
+                <span><small data-i18n="get.playon">Coming soon on</small><span class="store-name" data-i18n="get.play">Google Play</span></span>
+              </span>
+            </div>
+            <form class="get-form" id="notifyForm" action="#" novalidate>
+              <div class="get-field">
+                <svg class="get-mail-ic" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4.5 7.5 7.5 5.6 7.5-5.6"/></svg>
+                <input class="get-input" id="notifyEmail" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="you@example.com" aria-label="Email address" data-i18n-attr="placeholder:get.ph,aria-label:get.email.label">
+                <button class="btn btn-store btn-lg get-submit" type="submit" title="Get an email the moment FoldFX launches" data-i18n-attr="title:get.notify.title">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+                  <span data-i18n="get.notify">Notify me at launch</span>
+                </button>
+              </div>
+              <p class="get-form-msg" id="notifyMsg" role="status" aria-live="polite" hidden></p>
+            </form>
+            <div class="get-done" id="notifyDone" hidden role="status">
+              <svg class="get-done-check" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15.5 27.2l7.3 7.3L36.5 20"/></svg>
+              <div class="get-done-txt">
+                <strong id="notifyDoneH" data-i18n="get.done.h">You're on the list!</strong>
+                <span data-i18n="get.done.p">We'll email you the moment FoldFX launches.</span>
+              </div>
+            </div>
+            <p class="get-formnote" data-i18n="get.formnote">No spam. One email at launch — unsubscribe anytime.</p>
+            <ul class="trust-row" aria-label="Why you can trust FoldFX" data-i18n-attr="aria-label:trust.label">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/></svg><span data-i18n="trust.1">On-device only</span></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm-7 8a7 7 0 0 1 14 0z"/></svg><span data-i18n="trust.2">No account needed</span></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M6.2 6.2l11.6 11.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-i18n="trust.3">No ads</span></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg><span data-i18n="trust.4">Works offline</span></li>
+            </ul>
+            <p class="get-early" data-i18n="get.early">Be among the first — FoldFX arrives on the store at launch.</p>
+            <p class="get-note" data-i18n="get.note">Version 1.0 &middot; Android 12+ &middot; Foldable device recommended</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <img src="assets/foldfx-icon.png" alt="" width="30" height="30">
+            <span class="brand-name">Fold<span class="brand-fx">FX</span></span>
+          </a>
+          <p data-i18n="foot.tagline">Fluid, hinge-driven fold transitions for Android foldables. Built from scratch with Kotlin and Jetpack Compose.</p>
+        </div>
+        <nav class="footer-col" aria-label="Explore" data-i18n-attr="aria-label:foot.explore">
+          <h4 data-i18n="foot.explore">Explore</h4>
+          <a href="#demo" data-i18n="foot.demo">Live demo</a>
+          <a href="#features" data-i18n="foot.features">Features</a>
+          <a href="#how" data-i18n="foot.how">How it works</a>
+          <a href="#media" data-i18n="foot.media">Gallery</a>
+          <a href="#faq" data-i18n="foot.faq">FAQ</a>
+        </nav>
+        <nav class="footer-col" aria-label="Project" data-i18n-attr="aria-label:foot.project">
+          <h4 data-i18n="foot.project">Project</h4>
+          <a href="#tech" data-i18n="foot.tech">Tech stack</a>
+          <a href="#whatsnew" data-i18n="foot.news">What's new</a>
+          <a href="#honesty" data-i18n="foot.honest">Honest by design</a>
+          <a href="#get" data-i18n="foot.get">Get the app</a>
+        </nav>
+        <nav class="footer-col" aria-label="Legal" data-i18n-attr="aria-label:foot.legal">
+          <h4 data-i18n="foot.legal">Legal</h4>
+          <a href="privacy.html" data-i18n="foot.privacy">Privacy Policy</a>
+          <a href="terms.html" data-i18n="foot.terms">Terms of Service</a>
+          <a href="mailto:FoldFX@protonmail.com" data-i18n="foot.contact">Contact support</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p data-i18n="foot.rights">© <span id="year">2026</span> Hermes Lekkas. All rights reserved.</p>
+        <p class="footer-disclaimer" data-i18n="foot.disclaimer">FoldFX is an independent project. All third-party product names, logos and brands mentioned are the property of their respective owners and are used for identification purposes only.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ LIGHTBOX ============ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" data-i18n-attr="aria-label:media.lb.label" hidden>
+    <button type="button" class="lb-close" id="lbClose" aria-label="Close" data-i18n-attr="aria-label:media.lb.close">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <figure class="lb-figure">
+      <img id="lbImg" src="" alt="">
+      <figcaption id="lbCap"></figcaption>
+    </figure>
+  </div>
+
+  <script src="js/i18n/languages.js"></script>
+  <script src="js/i18n/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/notify.js"></script>
+</body>
+</html>

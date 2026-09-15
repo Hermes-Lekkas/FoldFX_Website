@@ -1,0 +1,41 @@
+# ===== OS junk =====
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ===== Editors / IDEs =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-project
+.sublime-workspace
+
+# ===== Logs & temp =====
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+temp/
+tmp/
+.cache/
+
+# ===== Dependency / build dirs (kept out in case tooling is added later) =====
+node_modules/
+dist/
+build/
+out/
+
+# ===== Environment / secrets =====
+.env
+.env.*
+!.env.example
+
+# ===== Local git config =====
+.gitattributes.local
