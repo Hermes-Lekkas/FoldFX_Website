@@ -66,5 +66,27 @@ window.FOLDFX = {
   /* Free waitlist counter (no account, no personal data — returns the
      running opt-in number as {"value": N}). Empty string disables the
      count and signups are emailed without it. */
-  counterURL: "https://abacus.jasoncameron.dev/hit/foldfx-launch/optins-v1"
+  counterURL: "https://abacus.jasoncameron.dev/hit/foldfx-launch/optins-v1",
+
+  /* ---- VISITOR ANALYTICS (strictly opt-in, behind the cookie banner) ----
+     Nothing below runs unless the visitor taps "Accept" on the banner.
+
+     ga4Id: paste your Google Analytics 4 Measurement ID (looks like
+       "G-XXXXXXXXXX") to unlock the full behaviour dashboard: visitors,
+       pageviews, scroll depth, which sections/buttons are used, languages,
+       realtime view… Create the free property at analytics.google.com
+       (Admin → Data streams → Web). Leave "" to run without GA4.
+
+     visitCounterURL / consentCounterURL: anonymous, cookieless Abacus
+       counters (same free service as the waitlist count — no account,
+       no personal data). Visits are counted once per browser per ~20h;
+       consents once per browser ever. Check them privately any time:
+
+       TOTAL VISITS   https://abacus.jasoncameron.dev/get/foldfx-launch/visits-v1
+       ACCEPTANCES    https://abacus.jasoncameron.dev/get/foldfx-launch/consents-v1
+
+       (visits vs acceptances ≈ your banner opt-in rate) */
+  ga4Id: "",
+  visitCounterURL: "https://abacus.jasoncameron.dev/hit/foldfx-launch/visits-v1",
+  consentCounterURL: "https://abacus.jasoncameron.dev/hit/foldfx-launch/consents-v1"
 };

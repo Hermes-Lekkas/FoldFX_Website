@@ -82,7 +82,7 @@
 
         <!-- ============ DOWNLOAD CARD ============ -->
         <section class="beta-dl-card">
-          <a class="btn btn-primary btn-lg beta-dl-btn" id="betaDlBtn" href="downloads/FoldFX-beta.apk" download="FoldFX-beta.apk" aria-disabled="true">
+          <a class="btn btn-primary btn-lg beta-dl-btn" id="betaDlBtn" href="downloads/FoldFX-beta.apk" download="FoldFX-beta.apk" aria-disabled="true" data-analytics="beta-download">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4.5 20h15"/></svg>
             <span data-i18n="beta.dl">Download the beta APK</span>
           </a>
@@ -154,6 +154,7 @@
           <a href="privacy.html" data-i18n="foot.privacy">Privacy Policy</a>
           <a href="terms.html" data-i18n="foot.terms">Terms of Service</a>
           <a href="mailto:FoldFX@protonmail.com" data-i18n="foot.contact">Contact support</a>
+          <button type="button" class="footer-link" id="consentSettings" data-i18n="cons.settings">Cookie settings</button>
         </nav>
       </div>
       <div class="footer-bottom">
@@ -166,6 +167,9 @@
   <script src="js/i18n/languages.js"></script>
   <script src="js/i18n/i18n.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/consent.js"></script>
+  <script src="js/analytics.js"></script>
   <script>
     (function () {
       "use strict";

@@ -1503,3 +1503,89 @@ html.fx-boot body { visibility: hidden; }
 
 /* Index — closed-beta CTA inside the get panel */
 .get-beta-sub { margin-top: 10px; color: var(--faint); font-size: 0.86rem; text-align: center; }
+
+/* ==========================================================================
+   Cookie consent banner (js/consent.js) — bottom card, RTL-safe
+   ========================================================================== */
+.consent {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 1400;
+  display: flex;
+  justify-content: center;
+  padding: 14px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+  pointer-events: none;
+}
+.consent[hidden] { display: none; }
+.consent-card {
+  pointer-events: auto;
+  width: min(660px, 100%);
+  background: rgba(10, 10, 13, 0.92);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  backdrop-filter: blur(18px) saturate(1.2);
+  border: 1px solid var(--border-strong);
+  border-radius: 18px;
+  padding: 18px 20px 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  transform: translateY(18px);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.25, 1), opacity 0.45s ease;
+}
+.consent.on .consent-card { transform: none; opacity: 1; }
+.consent-title { font-weight: 600; color: var(--text); font-size: 0.95rem; margin: 0 0 6px; }
+.consent-body { color: var(--muted); font-size: 0.85rem; line-height: 1.55; margin: 0 0 14px; }
+.consent-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.consent-btn {
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.consent-accept {
+  background: linear-gradient(135deg, #f4f5f7, #c9ccd4);
+  color: #0a0a0d;
+  border: 0;
+}
+.consent-accept:hover { transform: translateY(-2px); background: linear-gradient(135deg, #ffffff, #dfe2e8); }
+.consent-decline {
+  background: var(--panel);
+  color: var(--silver-2);
+  border: 1px solid var(--border);
+}
+.consent-decline:hover { background: var(--panel-strong); border-color: var(--border-strong); color: var(--text); transform: translateY(-2px); }
+.consent-privacy {
+  margin-inline-start: auto;
+  font-size: 0.8rem;
+  color: var(--faint);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.consent-privacy:hover { color: var(--text); }
+@media (max-width: 560px) {
+  .consent { padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px)); }
+  .consent-card { padding: 16px 16px 14px; border-radius: 16px; }
+  .consent-actions .consent-btn { flex: 1 1 auto; text-align: center; }
+  .consent-privacy { margin-inline-start: 0; flex-basis: 100%; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .consent-card { transition: none; transform: none; opacity: 1; }
+}
+
+/* Footer "Cookie settings" re-open button — matches .footer-col a look */
+.footer-col button.footer-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  text-align: start;
+  font-family: inherit;
+  color: var(--muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+.footer-col button.footer-link:hover { color: var(--text); }
