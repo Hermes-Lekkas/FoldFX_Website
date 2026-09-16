@@ -86,7 +86,7 @@ window.FOLDFX = {
        ACCEPTANCES    https://abacus.jasoncameron.dev/get/foldfx-launch/consents-v1
 
        (visits vs acceptances ≈ your banner opt-in rate) */
-  ga4Id: "",
+  ga4Id: "G-P1X62QWES2",
   visitCounterURL: "https://abacus.jasoncameron.dev/hit/foldfx-launch/visits-v1",
   consentCounterURL: "https://abacus.jasoncameron.dev/hit/foldfx-launch/consents-v1"
 };
