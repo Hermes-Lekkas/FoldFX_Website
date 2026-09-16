@@ -80,6 +80,8 @@
       g.gtag = function () { g.dataLayer.push(arguments); };
     }
     g.gtag("consent", "update", { analytics_storage: "granted" });
+    g.gtag("js", new Date()); /* REQUIRED init command — without it gtag.js
+                                 loads but never processes the queue (no hits) */
     var s = d.createElement("script");
     s.async = true;
     s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA;
