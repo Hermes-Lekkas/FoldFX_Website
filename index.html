@@ -48,12 +48,12 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "FoldFX",
-    "operatingSystem": "Android 12+",
+    "operatingSystem": "Android 8.0+",
     "applicationCategory": "PersonalizationApp",
     "description": "FoldFX recreates the fluid, hinge-driven fold transition on Android foldables using the real hinge-angle sensor.",
     "author": { "@type": "Person", "name": "Hermes Lekkas" },
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "softwareVersion": "1.0"
+    "offers": { "@type": "Offer", "price": "4.99", "priceCurrency": "EUR" },
+    "softwareVersion": "0.2.1"
   }
   </script>
 </head>
@@ -413,7 +413,7 @@
         <div class="faq-list reveal">
           <details class="faq">
             <summary data-i18n="faq.1q">Will FoldFX change how every app animates when I fold my phone?</summary>
-            <p data-i18n="faq.1a">No — and no third-party app can. Modifying system-wide transitions is an OS/OEM-level privilege on stock Android. FoldFX demonstrates and perfects the effect inside its own interface, built from scratch, and can extend into a live wallpaper or launcher in later phases.</p>
+            <p data-i18n="faq.1a">No — and no third-party app can. Modifying system-wide transitions is an OS/OEM-level privilege on stock Android. FoldFX brings the effect to its own interface, to your live wallpaper, and — experimentally, behind a clear disclosure screen — to other apps' screens via an accessibility overlay.</p>
           </details>
           <details class="faq">
             <summary data-i18n="faq.2q">Does my phone need a hinge-angle sensor?</summary>
@@ -421,7 +421,7 @@
           </details>
           <details class="faq">
             <summary data-i18n="faq.3q">Which devices are supported?</summary>
-            <p data-i18n="faq.3a">FoldFX requires Android 12 (API 31) or newer and is designed for foldable phones — book-style and flip-style. On non-foldable devices you can still experience and tune the full effect using the built-in on-screen debug slider.</p>
+            <p data-i18n="faq.3a">FoldFX runs on Android 8.0 (API 26) or newer and is designed for foldable phones — book-style and flip-style. The highest-quality render path needs Android 12+; older versions automatically use a compatible path. On non-foldable devices you can still experience and tune the full effect with the built-in on-screen slider.</p>
           </details>
           <details class="faq">
             <summary data-i18n="faq.4q">What can I customize?</summary>
@@ -464,25 +464,26 @@
           <div class="get-inner">
             <div class="get-badge">
               <i class="get-pulse" aria-hidden="true"></i>
-              <span data-i18n="get.soon">Coming soon</span>
+              <span data-i18n="get.soon">Available now</span>
             </div>
             <div class="get-icon-wrap">
               <i class="get-halo" aria-hidden="true"></i>
               <img src="assets/foldfx-icon.png" alt="" width="104" height="104" class="get-icon">
             </div>
-            <h2 class="grad-text" data-i18n="get.h2">The fold, soon in your hands.</h2>
-            <p class="get-sub" data-i18n="get.p">FoldFX is in the final stretch before its store debut. The live demo above is the real transition — and the store listing goes live at launch.</p>
+            <h2 class="grad-text" data-i18n="get.h2">The fold, in your hands.</h2>
+            <p class="get-sub" data-i18n="get.p">FoldFX is here. Buy it once, download it straight from this site and keep it forever — no store, no subscription. The live demo above is the real transition.</p>
             <div class="get-actions">
-              <span class="btn btn-store btn-lg" aria-disabled="true" title="Link goes live at launch" data-i18n-attr="title:get.title">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M4 3.5v17c0 .4.45.65.8.43l13.9-8.5a.5.5 0 0 0 0-.86L4.8 3.07a.5.5 0 0 0-.8.43z"/></svg>
-                <span><small data-i18n="get.playon">Coming soon on</small><span class="store-name" data-i18n="get.play">Google Play</span></span>
-              </span>
-              <a class="btn btn-primary btn-lg" href="beta.html" data-analytics="get-beta">
+              <a class="btn btn-primary btn-lg" href="https://buy.polar.sh/polar_cl_dkIh9Yh0EHWFHySRn7WnlerIILo9usMcF6Ubq0ctrPz" data-analytics="get-buy" data-i18n-attr="title:get.buy.title">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><path d="M2.5 10h19"/></svg>
+                <span data-i18n="get.buy">Buy FoldFX — €4.99</span>
+              </a>
+              <a class="btn btn-ghost btn-lg" href="beta.html" data-analytics="get-beta">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4.5 20h15"/></svg>
                 <span data-i18n="get.beta">Join the closed beta</span>
               </a>
             </div>
-            <p class="get-beta-sub" data-i18n="get.beta.sub">Grab the APK, sideload it in a minute, and talk to the team on the beta page.</p>
+            <p class="get-beta-sub" data-i18n="get.buy.sub">One-time payment · your key works on 3 devices · 7-day full trial before you pay</p>
+            <p class="get-beta-sub" data-i18n="get.beta.sub">Prefer to test first? Grab the beta APK, sideload it in a minute and talk to the team on the beta page.</p>
             <form class="get-form" id="notifyForm" action="#" novalidate>
               <div class="get-field">
                 <svg class="get-mail-ic" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4.5 7.5 7.5 5.6 7.5-5.6"/></svg>

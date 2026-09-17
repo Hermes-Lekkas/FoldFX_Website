@@ -22,12 +22,12 @@
     })();
   </script>
   <title data-i18n="meta.beta.title">FoldFX — Beta program</title>
-  <meta name="description" content="Download the FoldFX beta APK for Android foldables. A signed, obfuscated release build — sideload it in minutes and join the tester community." data-i18n-attr="content:meta.beta.desc">
+  <meta name="description" content="Download the FoldFX beta APK for Android foldables — the full app, checksum-verified. Sideload it in minutes and join the tester community." data-i18n-attr="content:meta.beta.desc">
   <meta name="theme-color" content="#050506">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="FoldFX">
   <meta property="og:title" content="FoldFX — Beta program" data-i18n-attr="content:meta.beta.title">
-  <meta property="og:description" content="Get the FoldFX beta APK for Android foldables — signed, obfuscated, and verified with a SHA-256 checksum." data-i18n-attr="content:meta.beta.desc">
+  <meta property="og:description" content="Get the FoldFX beta APK for Android foldables — the full app, verified with a SHA-256 checksum." data-i18n-attr="content:meta.beta.desc">
   <meta property="og:image" content="assets/og-banner.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -74,11 +74,11 @@
       <header class="legal-head">
         <span class="eyebrow" data-i18n="beta.eyebrow">Closed beta</span>
         <h1 data-i18n="beta.h1">Get the FoldFX beta</h1>
-        <p class="legal-meta" data-i18n="beta.meta">Direct APK download · Android 12+ · Foldable device recommended</p>
+        <p class="legal-meta" data-i18n="beta.meta">Direct APK download · Android 8.0+ · Foldable device recommended</p>
       </header>
 
       <article class="legal-body">
-        <p data-i18n="beta.p">FoldFX is in closed beta, and the transition you saw in the demo is the real thing. Sideloading takes about a minute: download the APK below, let your browser install it, and you are in. The build is hardened and checksum-verified — and testers can talk to the developer and to each other at the bottom of this page.</p>
+        <p data-i18n="beta.p">FoldFX is in closed beta, and the transition you saw in the demo is the real thing. Sideloading takes about a minute: download the APK below, let your browser install it, and you are in. Every build is checksum-verified — and testers can talk to the developer and to each other at the bottom of this page.</p>
 
         <!-- ============ DOWNLOAD CARD ============ -->
         <section class="beta-dl-card">
@@ -88,8 +88,8 @@
           </a>
           <p class="beta-dl-soon" id="betaDlSoon" data-i18n="beta.dl.soon">The first beta build is uploading — check back shortly.</p>
           <p class="beta-dl-note">
-            <span data-i18n="beta.dl.note">Signed release build · shrunk and obfuscated with R8</span>
-            <span class="beta-file">FoldFX-beta.apk · 1.0 · beta 1</span>
+            <span data-i18n="beta.dl.note">Full-featured beta build (0.2.1) · debug-signed during beta, release-signed at launch</span>
+            <span class="beta-file">FoldFX-beta.apk · 0.2.1 · beta 1</span>
           </p>
           <p class="beta-checksum" id="betaChecksumRow" hidden data-i18n-html="beta.checksum.hint">Every beta ships with a SHA-256 checksum in <a href="downloads/checksums.txt">checksums.txt</a> — verify the file before installing.</p>
         </section>
@@ -109,7 +109,7 @@
         <!-- ============ ABOUT THE BUILD ============ -->
         <section>
           <h2 data-i18n="beta.about.h3">About the build</h2>
-          <p data-i18n="beta.about.p">This beta is a signed release build — not a debug APK. The code is shrunk and obfuscated with R8 in full mode: classes and methods are renamed to meaningless short names, the package structure is flattened, unused code and resources are stripped, and debug logging is compiled out. The APK contains nothing that can be read back into the original source, and the mapping file that could undo the renaming exists only on the developer's side — it is never published.</p>
+          <p data-i18n="beta.about.p">Beta 1 (version 0.2.1) is the complete app — every feature, nothing held back. During the beta the APK is debug-signed so builds can iterate quickly; the final release build will be signed with the release key and shrunk and obfuscated with R8, exactly like a production release. Every build is checksum-verified: check downloads/checksums.txt before installing.</p>
         </section>
 
         <!-- ============ TESTER TALK ============ -->
