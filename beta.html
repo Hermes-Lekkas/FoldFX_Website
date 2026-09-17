@@ -22,12 +22,12 @@
     })();
   </script>
   <title data-i18n="meta.beta.title">FoldFX — Beta program</title>
-  <meta name="description" content="Download the FoldFX beta APK for Android foldables — the full app, checksum-verified. Sideload it in minutes and join the tester community." data-i18n-attr="content:meta.beta.desc">
+  <meta name="description" content="Request access to the FoldFX beta for Android foldables — every request is reviewed by hand, and approved testers download the signed, checksum-verified APK." data-i18n-attr="content:meta.beta.desc">
   <meta name="theme-color" content="#050506">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="FoldFX">
   <meta property="og:title" content="FoldFX — Beta program" data-i18n-attr="content:meta.beta.title">
-  <meta property="og:description" content="Get the FoldFX beta APK for Android foldables — the full app, verified with a SHA-256 checksum." data-i18n-attr="content:meta.beta.desc">
+  <meta property="og:description" content="Request access to the FoldFX beta for Android foldables — approved testers download the signed, checksum-verified APK." data-i18n-attr="content:meta.beta.desc">
   <meta property="og:image" content="assets/og-banner.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -74,24 +74,48 @@
       <header class="legal-head">
         <span class="eyebrow" data-i18n="beta.eyebrow">Closed beta</span>
         <h1 data-i18n="beta.h1">Get the FoldFX beta</h1>
-        <p class="legal-meta" data-i18n="beta.meta">Direct APK download · Android 8.0+ · Foldable device recommended</p>
+        <p class="legal-meta" data-i18n="beta.meta">Reviewed access · signed APK · Android 8.0+ · Foldable device recommended</p>
       </header>
 
       <article class="legal-body">
-        <p data-i18n="beta.p">FoldFX is in closed beta, and the transition you saw in the demo is the real thing. Sideloading takes about a minute: download the APK below, let your browser install it, and you are in. Every build is checksum-verified — and testers can talk to the developer and to each other at the bottom of this page.</p>
+        <p data-i18n="beta.p">FoldFX is in closed beta, and the transition you saw in the demo is the real thing. Access is approved by hand: request it with your email below, and once you are in, sideloading takes about a minute. Every build is checksum-verified — and testers can talk to the developer and to each other at the bottom of this page.</p>
 
-        <!-- ============ DOWNLOAD CARD ============ -->
-        <section class="beta-dl-card">
-          <a class="btn btn-primary btn-lg beta-dl-btn" id="betaDlBtn" href="downloads/FoldFX-beta.apk" download="FoldFX-beta.apk" aria-disabled="true" data-analytics="beta-download">
+        <!-- ============ ACCESS GATE ============ -->
+        <section class="beta-gate" id="betaGate">
+          <h2 data-i18n="beta.gate.h">Request beta access</h2>
+          <p data-i18n="beta.gate.p">The beta is invite-only. Enter your email to request access — every request is reviewed by hand, and not everyone is accepted. Once you are approved, this same page unlocks the download.</p>
+          <form class="beta-gate-form" id="betaGateForm" action="#" novalidate>
+            <div class="get-field">
+              <svg class="get-mail-ic" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4.5 7.5 7.5 5.6 7.5-5.6"/></svg>
+              <input class="get-input" id="betaGateEmail" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="you@example.com" aria-label="Email address" data-i18n-attr="placeholder:beta.gate.ph,aria-label:beta.gate.label">
+              <button class="btn btn-store btn-lg get-submit" type="submit" data-analytics="beta-request">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+                <span data-i18n="beta.gate.submit">Request access</span>
+              </button>
+            </div>
+            <p class="get-form-msg" id="betaGateMsg" role="status" aria-live="polite" hidden></p>
+          </form>
+        </section>
+
+        <!-- ============ PENDING STATE ============ -->
+        <section class="beta-gate" id="betaPending" hidden>
+          <h2 data-i18n="beta.gate.pending.h">Request sent</h2>
+          <p data-i18n="beta.gate.pending.p">Your request is on its way to the developer. Once it is approved, come back here, enter the same email, and the download will unlock.</p>
+        </section>
+
+        <!-- ============ GATED DOWNLOAD ============ -->
+        <section class="beta-dl-card" id="betaDownload" hidden>
+          <p class="beta-approved" id="betaApprovedBadge" hidden data-i18n="beta.gate.approved.h">You're in — thanks for testing!</p>
+          <a class="btn btn-primary btn-lg beta-dl-btn" id="betaDlBtn" href="downloads/FoldFX-0.2.2-release.apk" download="FoldFX-0.2.2-release.apk" aria-disabled="true" data-analytics="beta-download">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4.5 20h15"/></svg>
             <span data-i18n="beta.dl">Download the beta APK</span>
           </a>
-          <p class="beta-dl-soon" id="betaDlSoon" data-i18n="beta.dl.soon">The first beta build is uploading — check back shortly.</p>
+          <p class="beta-dl-soon" id="betaDlSoon" data-i18n="beta.dl.soon">The build is uploading — check back shortly.</p>
           <p class="beta-dl-note">
-            <span data-i18n="beta.dl.note">Full-featured beta build (0.2.1) · debug-signed during beta, release-signed at launch</span>
-            <span class="beta-file">FoldFX-beta.apk · 0.2.1 · beta 1</span>
+            <span data-i18n="beta.dl.note">Release build 0.2.2 · properly signed and R8-shrunk · one license key = one device</span>
+            <span class="beta-file">FoldFX-0.2.2-release.apk · 0.2.2 · release-signed</span>
           </p>
-          <p class="beta-checksum" id="betaChecksumRow" hidden data-i18n-html="beta.checksum.hint">Every beta ships with a SHA-256 checksum in <a href="downloads/checksums.txt">checksums.txt</a> — verify the file before installing.</p>
+          <p class="beta-checksum" id="betaChecksumRow" hidden data-i18n-html="beta.checksum.hint">Every build ships with a SHA-256 checksum in <a href="downloads/checksums.txt">checksums.txt</a> — verify the file before installing.</p>
         </section>
 
         <!-- ============ INSTALL ============ -->
@@ -101,15 +125,16 @@
             <li data-i18n="beta.step1">Tap the download button above and wait for the APK to finish downloading.</li>
             <li data-i18n="beta.step2">Open the file when your phone asks — or find it later in your Downloads folder.</li>
             <li data-i18n="beta.step3">If Android warns you, allow installs from your browser (Settings → Install unknown apps). That prompt appears for every sideloaded app, not just FoldFX.</li>
-            <li data-i18n="beta.step4">Tap Install, open FoldFX, and tune the transition with the on-screen slider.</li>
+            <li data-i18n="beta.step4">Tap Install, open FoldFX, and activate your license key (License → paste key) to unlock everything.</li>
           </ol>
           <p class="beta-warn" data-i18n="beta.warn">Only download FoldFX from this page. If your browser or antivirus flags a sideloaded APK, that is expected — it happens because the beta is not distributed through the Play Store, not because anything is wrong.</p>
+          <p class="beta-migrate" data-i18n="beta.migrate">Updating from the earlier debug-signed beta (0.2.1 or older)? Uninstall it first — the app is release-signed now, and Android refuses in-place updates across signing identities. Your license key stays valid; just activate it again.</p>
         </section>
 
         <!-- ============ ABOUT THE BUILD ============ -->
         <section>
           <h2 data-i18n="beta.about.h3">About the build</h2>
-          <p data-i18n="beta.about.p">Beta 1 (version 0.2.1) is the complete app — every feature, nothing held back. During the beta the APK is debug-signed so builds can iterate quickly; the final release build will be signed with the release key and shrunk and obfuscated with R8, exactly like a production release. Every build is checksum-verified: check downloads/checksums.txt before installing.</p>
+          <p data-i18n="beta.about.p">Beta builds are the real thing now: version 0.2.2 is the signed release build — the exact APK buyers receive, shrunk and obfuscated with R8 and signed with the release key. Note that FoldFX ships without a free trial: after installing, activate a license key to unlock the wallpaper and system overlay (one key covers one device; deactivate it in-app to move it). Every build is checksum-verified: check downloads/checksums.txt before installing.</p>
         </section>
 
         <!-- ============ TESTER TALK ============ -->
@@ -168,6 +193,8 @@
   <script src="js/i18n/i18n.js"></script>
   <script src="js/main.js"></script>
   <script src="js/config.js"></script>
+  <script src="js/beta-allowlist.js"></script>
+  <script src="js/beta-gate.js"></script>
   <script src="js/consent.js"></script>
   <script src="js/analytics.js"></script>
   <script>
@@ -175,12 +202,14 @@
       "use strict";
 
       /* ---------- beta APK availability ----------
-         The download activates the moment downloads/FoldFX-beta.apk exists on
-         the deployed site; until then testers see the "uploading" state and
-         never hit a dead link. */
+         Runs once at load (harmless while the card is hidden) and again
+         the moment the gate unlocks a tester: the download activates only
+         when downloads/FoldFX-0.2.2-release.apk actually exists on the
+         deployed site, so nobody ever hits a dead link. */
       var btn = document.getElementById("betaDlBtn");
       var soon = document.getElementById("betaDlSoon");
       var row = document.getElementById("betaChecksumRow");
+      var probed = false;
 
       function gate(e) {
         if (btn && btn.getAttribute("aria-disabled") === "true") e.preventDefault();
@@ -200,11 +229,14 @@
         }
       }
 
-      try {
-        fetch("downloads/FoldFX-beta.apk", { method: "HEAD" })
-          .then(function (r) { state(r.ok); })
-          .catch(function () { state(false); });
-      } catch (e) { state(false); }
+      window.FXBetaProbe = function () {
+        try {
+          fetch("downloads/FoldFX-0.2.2-release.apk", { method: "HEAD" })
+            .then(function (r) { probed = true; state(r.ok); })
+            .catch(function () { state(false); });
+        } catch (e) { state(false); }
+      };
+      window.FXBetaProbe();
 
       /* ---------- tester talk (giscus) ----------
          Conversations are powered by giscus (GitHub Discussions under the
