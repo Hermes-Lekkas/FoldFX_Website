@@ -956,7 +956,6 @@ input[type="range"]::-moz-range-thumb {
 .get-sub { color: var(--muted); max-width: 560px; margin: 0 auto 38px; font-size: 1.02rem; }
 
 .get-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-.get-actions.get-dl { margin-top: 22px; }
 .get-inner .trust-row { margin: 36px auto 0; }
 
 /* premium store chip: silver gradient + periodic shine sweep */
