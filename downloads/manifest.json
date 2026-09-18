@@ -1,7 +1,7 @@
 {
-  "versionCode": 4,
-  "versionName": "0.2.2",
-  "apkUrl": "https://hermes-lekkas.github.io/FoldFX_Website/downloads/FoldFX-0.2.2-release.apk",
-  "sha256": "a13feca063117f7ed553d4cd310d8611dcbdb70b326cd8684bc8d94e4b170795",
-  "releaseNotesUrl": "https://hermes-lekkas.github.io/FoldFX_Website/beta.html"
+  "versionCode": 7,
+  "versionName": "0.2.5",
+  "apkUrl": "https://roodynorman21.github.io/FoldFX_Website/downloads/FoldFX-0.2.5-release.apk",
+  "sha256": "63edce4c3a1da19b25c83e3b6eea6abbc38d4ba5b9830bdc3bb57860a44fdad3",
+  "releaseNotesUrl": "https://roodynorman21.github.io/FoldFX_Website/beta.html"
 }

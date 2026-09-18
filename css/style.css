@@ -1651,3 +1651,7 @@ html.fx-boot body { visibility: hidden; }
   .beta-gate-form .get-input { width: 100%; flex: 1 1 100%; text-align: center; }
   .beta-gate-form .get-submit { width: 100%; justify-content: center; }
 }
+
+/* ===== 0.2.5: device-compatibility disclaimers ===== */
+.get-note.get-compat { margin-top: 10px; color: var(--muted); font-size: 0.8rem; }
+.beta-dl-card .beta-warn { margin-top: 16px; }
