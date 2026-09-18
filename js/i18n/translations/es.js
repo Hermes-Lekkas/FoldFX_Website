@@ -226,6 +226,13 @@
     "trust.2": "Sin necesidad de cuenta",
     "trust.3": "Sin anuncios",
     "trust.4": "Funciona sin conexión",
+    /* ---------- social proof billboard ---------- */
+    "marquee.sold.t": "personas ya han comprado FoldFX",
+    "marquee.beta.t": "beta-testers en multitud de dispositivos",
+    "marquee.once": "Paga una vez — tuyo para siempre",
+    "marquee.refund": "Reembolsos sin complicaciones vía Polar",
+    "marquee.key": "Una clave — para todos tus plegables",
+    "marquee.hook": "La transición que tu plegable merecía",
 
     /* ---------- footer (shared) ---------- */
     "foot.tagline": "Transiciones de plegado fluidas, guiadas por la bisagra, para plegables Android. Construido desde cero con Kotlin y Jetpack Compose.",

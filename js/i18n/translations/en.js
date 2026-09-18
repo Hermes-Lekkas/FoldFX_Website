@@ -239,6 +239,13 @@
     "trust.2": "No account needed",
     "trust.3": "No ads",
     "trust.4": "Works offline",
+    /* ---------- social proof billboard ---------- */
+    "marquee.sold.t": "people have already bought FoldFX",
+    "marquee.beta.t": "beta testers across multiple devices",
+    "marquee.once": "Pay once — yours forever",
+    "marquee.refund": "Hassle-free refunds via Polar",
+    "marquee.key": "One key — every foldable you own",
+    "marquee.hook": "The transition your foldable was made for",
 
     /* ---------- footer (shared) ---------- */
     "foot.tagline": "Fluid, hinge-driven fold transitions for Android foldables. Built from scratch with Kotlin and Jetpack Compose.",

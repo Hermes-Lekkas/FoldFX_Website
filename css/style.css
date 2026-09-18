@@ -829,6 +829,73 @@ input[type="range"]::-moz-range-thumb {
 .faq p { color: var(--muted); font-size: 0.94rem; padding: 0 0 20px; }
 .faq a { text-decoration: underline; text-underline-offset: 3px; color: var(--silver-2); }
 
+/* ---------- Social proof billboard (marquee) ---------- */
+
+.billboard {
+  border-block: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.032), rgba(255, 255, 255, 0.012));
+  padding: 17px 0;
+}
+
+.billboard-viewport {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+
+.billboard-track {
+  display: flex;
+  width: max-content;
+  animation: billboard-scroll 34s linear infinite;
+}
+.billboard:hover .billboard-track { animation-play-state: paused; }
+
+@keyframes billboard-scroll { to { transform: translateX(-50%); } }
+@keyframes billboard-scroll-rtl { to { transform: translateX(50%); } }
+[dir="rtl"] .billboard-track { animation-name: billboard-scroll-rtl; }
+
+.billboard-list { display: flex; margin: 0; padding: 0; list-style: none; }
+
+.billboard-list li {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  margin-right: 18px;
+  font-size: 0.92rem;
+  color: var(--muted); /* 7.4:1 on the tinted strip — AA */
+}
+.billboard-list li::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  margin-left: 18px;
+  border-radius: 1.5px;
+  background: var(--silver-3);
+  opacity: 0.6;
+  transform: rotate(45deg);
+}
+.billboard-list strong {
+  font-family: var(--mono);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--silver-1);
+  margin-right: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 720px) {
+  .billboard-list li { font-size: 0.86rem; }
+  .billboard-list strong { font-size: 0.94rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .billboard-viewport { overflow-x: auto; }
+  .billboard-track { animation: none; }
+  /* keep the fade mask off while scrolling manually — it clips the scrollbar edge */
+  .billboard-viewport { -webkit-mask-image: none; mask-image: none; }
+}
+
 /* ---------- Get the app — coming-soon teaser ---------- */
 
 .get-panel {

@@ -226,6 +226,13 @@
     "trust.2": "Kein Konto nötig",
     "trust.3": "Keine Werbung",
     "trust.4": "Funktioniert offline",
+    /* ---------- social proof billboard ---------- */
+    "marquee.sold.t": "Menschen haben FoldFX bereits gekauft",
+    "marquee.beta.t": "Beta-Tester auf zahlreichen Geräten",
+    "marquee.once": "Einmal zahlen — für immer dein",
+    "marquee.refund": "Unkomplizierte Rückerstattung über Polar",
+    "marquee.key": "Ein Schlüssel — für jedes deiner Foldables",
+    "marquee.hook": "Der Übergang, den dein Foldable verdient",
 
     /* ---------- footer (shared) ---------- */
     "foot.tagline": "Flüssige, scharniergesteuerte Faltübergänge für Android-Faltgeräte. Von Grund auf gebaut mit Kotlin und Jetpack Compose.",

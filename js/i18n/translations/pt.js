@@ -229,6 +229,13 @@
     "trust.2": "Sem necessidade de conta",
     "trust.3": "Sem anúncios",
     "trust.4": "Funciona offline",
+    /* ---------- social proof billboard ---------- */
+    "marquee.sold.t": "pessoas já compraram o FoldFX",
+    "marquee.beta.t": "beta-testers em vários dispositivos",
+    "marquee.once": "Pague uma vez — seu para sempre",
+    "marquee.refund": "Reembolsos sem complicações via Polar",
+    "marquee.key": "Uma chave — para todos os seus dobráveis",
+    "marquee.hook": "A transição que o seu dobrável merecia",
 
     /* ---------- footer (shared) ---------- */
     "foot.tagline": "Transições de dobra fluidas, guiadas pela dobradiça, para dobráveis Android. Construído do zero com Kotlin e Jetpack Compose.",

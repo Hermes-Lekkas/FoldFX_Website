@@ -229,6 +229,13 @@
     "trust.2": "Tanpa perlu akun",
     "trust.3": "Tanpa iklan",
     "trust.4": "Berfungsi offline",
+    /* ---------- social proof billboard ---------- */
+    "marquee.sold.t": "orang sudah membeli FoldFX",
+    "marquee.beta.t": "penguji beta di berbagai perangkat",
+    "marquee.once": "Bayar sekali — jadi milikmu selamanya",
+    "marquee.refund": "Pengembalian dana mudah via Polar",
+    "marquee.key": "Satu kunci — untuk semua perangkat lipatmu",
+    "marquee.hook": "Transisi yang diciptakan untuk ponsel lipatmu",
 
     /* ---------- footer (shared) ---------- */
     "foot.tagline": "Transisi lipatan yang mengalir, digerakkan engsel, untuk ponsel lipat Android. Dibangun dari nol dengan Kotlin dan Jetpack Compose.",

@@ -226,6 +226,13 @@
     "trust.2": "无需注册账号",
     "trust.3": "无广告",
     "trust.4": "支持离线使用",
+    /* ---------- social proof billboard ---------- */
+    "marquee.sold.t": "位用户已购买 FoldFX",
+    "marquee.beta.t": "位 Beta 测试员覆盖多种机型",
+    "marquee.once": "一次买断，永久使用",
+    "marquee.refund": "通过 Polar 轻松退款",
+    "marquee.key": "一枚密钥 — 多台设备随心换",
+    "marquee.hook": "为折叠屏而生的转场动画",
 
     /* ---------- footer (shared) ---------- */
     "foot.tagline": "为 Android 折叠屏打造的流畅铰链驱动折叠过渡。以 Kotlin 与 Jetpack Compose 从零构建。",

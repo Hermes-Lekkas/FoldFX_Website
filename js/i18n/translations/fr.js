@@ -226,6 +226,13 @@
     "trust.2": "Aucun compte requis",
     "trust.3": "Sans publicité",
     "trust.4": "Fonctionne hors ligne",
+    /* ---------- social proof billboard ---------- */
+    "marquee.sold.t": "personnes ont déjà acheté FoldFX",
+    "marquee.beta.t": "bêta-testeurs sur de nombreux appareils",
+    "marquee.once": "Un seul paiement — à vous pour toujours",
+    "marquee.refund": "Remboursement sans tracas via Polar",
+    "marquee.key": "Une seule clé — pour tous vos pliables",
+    "marquee.hook": "La transition que votre pliable attendait",
 
     /* ---------- footer (shared) ---------- */
     "foot.tagline": "Des transitions de pliage fluides, pilotées par la charnière, pour les pliables Android. Construit de zéro avec Kotlin et Jetpack Compose.",

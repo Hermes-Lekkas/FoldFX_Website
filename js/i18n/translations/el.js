@@ -226,6 +226,13 @@
     "trust.2": "Χωρίς λογαριασμό",
     "trust.3": "Χωρίς διαφημίσεις",
     "trust.4": "Λειτουργεί εκτός σύνδεσης",
+    /* ---------- social proof billboard ---------- */
+    "marquee.sold.t": "άνθρωποι έχουν ήδη αγοράσει το FoldFX",
+    "marquee.beta.t": "δοκιμαστές beta σε πολλές συσκευές",
+    "marquee.once": "Μία πληρωμή — δικό σου για πάντα",
+    "marquee.refund": "Εύκολη επιστροφή χρημάτων μέσω Polar",
+    "marquee.key": "Ένα κλειδί — για κάθε σου foldable",
+    "marquee.hook": "Το transition που αξίζει το foldable σου",
 
     /* ---------- footer (shared) ---------- */
     "foot.tagline": "Ομαλές μεταβάσεις δίπλωσης, καθοδηγούμενες από τον μεντεσέ, για αναδιπλούμενες συσκευές Android. Χτισμένο από το μηδέν με Kotlin και Jetpack Compose.",

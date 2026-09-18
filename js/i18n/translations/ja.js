@@ -226,6 +226,13 @@
     "trust.2": "アカウント不要",
     "trust.3": "広告なし",
     "trust.4": "オフラインで動作",
+    /* ---------- social proof billboard ---------- */
+    "marquee.sold.t": "人がすでに FoldFX を購入",
+    "marquee.beta.t": "人のベータテスターが多数の端末で検証中",
+    "marquee.once": "一度の購入でずっと使える",
+    "marquee.refund": "Polar 経由で安心返金",
+    "marquee.key": "キーは1つ — 端末を乗り換えてもそのまま",
+    "marquee.hook": "折りたたみ端末のために生まれたトランジション",
 
     /* ---------- footer (shared) ---------- */
     "foot.tagline": "Android 折りたたみ端末のための、なめらかでヒンジ駆動の折りたたみトランジション。Kotlin と Jetpack Compose でゼロから構築。",
