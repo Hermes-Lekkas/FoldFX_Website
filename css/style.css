@@ -1521,11 +1521,10 @@ html.fx-boot body { visibility: hidden; }
 .beta-private a { color: var(--silver-2); text-decoration: underline; text-underline-offset: 3px; }
 .beta-private a:hover { color: var(--silver-1); }
 
-/* Index — closed-beta CTA inside the get panel */
-.get-beta-sub { margin-top: 10px; color: var(--faint); font-size: 0.86rem; text-align: center; }
+/* Index — microcopy line under the buy CTA (payment · key portability · refunds) */
+.get-micro { margin-top: 16px; color: var(--muted); font-size: 0.87rem; text-align: center; }
 
-/* buy-section assurance, payment badges and social proof */
-.get-assure { margin-top: 14px; color: var(--muted); font-size: 0.87rem; text-align: center; }
+/* buy-section payment badges */
 .get-pay { margin-top: 12px; display: flex; gap: 7px; justify-content: center; align-items: center; flex-wrap: wrap; }
 .pay-badge {
   border: 1px solid var(--border);
@@ -1539,7 +1538,6 @@ html.fx-boot body { visibility: hidden; }
   white-space: nowrap;
 }
 .get-pay-note { margin-left: 4px; color: var(--faint); font-size: 0.76rem; }
-.get-proof { margin-top: 14px; color: var(--muted); font-size: 0.87rem; text-align: center; max-width: 620px; margin-left: auto; margin-right: auto; }
 
 /* ==========================================================================
    Cookie consent banner (js/consent.js) — bottom card, RTL-safe
@@ -1690,5 +1688,4 @@ html.fx-boot body { visibility: hidden; }
 }
 
 /* ===== 0.2.5: device-compatibility disclaimers ===== */
-.get-note.get-compat { margin-top: 10px; color: var(--muted); font-size: 0.8rem; }
 .beta-dl-card .beta-warn { margin-top: 16px; }
