@@ -572,10 +572,17 @@
   <script src="js/i18n/languages.js"></script>
   <script src="js/i18n/i18n.js"></script>
   <!-- Polar embedded checkout: opens the buy link as an in-page overlay.
-       Falls back to a normal redirect to buy.polar.sh if this script fails. -->
+       Falls back to a normal redirect to buy.polar.sh if this script fails.
+
+       REQUIRES one dashboard step, or Polar rejects the embed (the iframe is
+       bounced to polar.sh, which forbids framing — the "Framing 'https://
+       polar.sh/' violates frame-ancestors" console message):
+         polar.sh → Dashboard → Settings → Preferences → Embedding
+         → add https://roodynorman21.github.io (applies as soon as saved). -->
   <script defer data-auto-init src="https://cdn.jsdelivr.net/npm/@polar-sh/checkout@latest/dist/embed.global.js"></script>
-  <!-- Safety net: if Polar rejects the embed (site origin not yet allow-listed
-       in the Polar dashboard), open the hosted checkout instead of leaving the
+  <!-- Safety net: if Polar rejects the embed (origin not yet on the
+       Settings → Preferences → Embedding list), tear the dead overlay down
+       within ~1.5s and open the hosted checkout instead of leaving the
        visitor stuck on a blank overlay. -->
   <script src="js/buy-fallback.js" defer></script>
   <script src="js/main.js"></script>

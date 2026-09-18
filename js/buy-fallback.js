@@ -2,25 +2,43 @@
    FoldFX — buy overlay fallback
    --------------------------------------------------------------------------
    The Polar embedded checkout (data-polar-checkout) only works once this
-   site's origin is allow-listed in the Polar dashboard (Settings →
-   Checkout origins). Until then Polar silently rejects the embed: the
-   overlay iframe is redirected to polar.sh and never posts a "loaded"
-   message, leaving the visitor stuck on an empty overlay.
+   site's origin is allow-listed in the Polar dashboard:
 
-   This script watches for the checkout's "loaded" postMessage after the
-   Buy button is clicked. If the overlay never signals within a few
-   seconds, it tears the overlay down and sends the visitor to the hosted
-   checkout (new tab when the browser allows it, same-tab otherwise) —
-   so the Buy button always works.
+       polar.sh → Dashboard → Settings → Preferences → Embedding
+
+   Add https://roodynorman21.github.io there (plus the site's future custom
+   domain, if one is ever added). The list applies as soon as it is saved.
+
+   Until the origin is on the list, Polar bounces the overlay iframe to
+   polar.sh — which forbids framing (frame-ancestors 'none') — so the
+   browser blocks the frame, logs the "Framing 'https://polar.sh/' …"
+   console message, and Polar's "loaded" postMessage never arrives.
+
+   How we detect that (no cross-origin introspection is possible):
+     • A REJECTED embed fires the iframe's `load` event almost instantly
+       (on the blocked redirect) and never posts a "loaded" message.
+     • A WORKING embed loads the real checkout first, then posts "loaded".
+   So: once the iframe fires `load`, we open a short grace window for the
+   "loaded" message. If it never arrives, the overlay is torn down and the
+   visitor is sent to the hosted checkout (new tab when the browser allows
+   it, same tab otherwise) — the Buy button always works.
+
+   Note: keying the grace window off `load` (not off the click) also makes
+   the fallback safe on slow connections — a genuinely loading checkout is
+   never torn down while it is still making progress.
    ========================================================================== */
 (function () {
   "use strict";
 
-  // How long (ms) to wait for the checkout's "loaded" message after the
-  // overlay iframe appears before assuming the embed was rejected.
-  // Kept under Chrome's ~5s transient-activation window so a popup is
-  // still allowed by the browser's popup blocker at fallback time.
-  var LOADED_TIMEOUT = 3000;
+  // Grace window (ms) after the overlay iframe's `load` event for Polar to
+  // post its "loaded" message. A rejected embed hits this ~instantly and
+  // falls back in ~1.5s; a working checkout posts "loaded" right after its
+  // page finishes loading, well inside this window.
+  var GRACE_AFTER_LOAD = 1500;
+  // Backstop (ms) after the iframe appears but before any `load` event —
+  // covers "checkout page never even starts loading". Slow connections are
+  // still safe: they get the full GRACE_AFTER_LOAD window after `load`.
+  var LOAD_WATCH = 4000;
   // How long (ms) to wait for the overlay iframe to appear at all.
   var IFRAME_WATCH = 3000;
   var POLAR_ORIGINS = ["https://polar.sh", "https://sandbox.polar.sh", "https://buy.polar.sh"];
@@ -63,8 +81,19 @@
     if (watchClick.running) return; // one fallback per click
     watchClick.running = true;
     alive = false;
+    var settled = false; // a decision was made (embed OK or fallback done)
 
-    function done() { watchClick.running = false; }
+    function done() {
+      watchClick.running = false;
+    }
+
+    function reject() {
+      if (settled) return;
+      settled = true;
+      done();
+      teardownOverlay();
+      fallbackToTab(link);
+    }
 
     // Wait for the overlay iframe to appear.
     var startedAt = Date.now();
@@ -72,14 +101,23 @@
       var frame = document.querySelector('iframe[src*="polar"]');
       if (frame) {
         clearInterval(watch);
-        // Overlay is up — now wait for its "loaded" message.
+
+        // Grace window starts at the iframe's `load` event. Rejected embeds
+        // fire `load` on the blocked redirect and never post "loaded", so
+        // they are caught here ~1.5s after the click.
+        frame.addEventListener("load", function () {
+          if (settled) return;
+          setTimeout(function () {
+            if (settled || alive) return;
+            reject();
+          }, GRACE_AFTER_LOAD);
+        });
+
+        // Backstop: `load` never fires at all (stalled request).
         setTimeout(function () {
-          done();
-          if (!alive) {
-            teardownOverlay();
-            fallbackToTab(link);
-          }
-        }, LOADED_TIMEOUT);
+          if (settled || alive) return;
+          reject();
+        }, LOAD_WATCH);
       } else if (Date.now() - startedAt > IFRAME_WATCH) {
         // No overlay at all (script blocked / CSP denied): the browser's
         // native navigation to the hosted checkout handles it.
