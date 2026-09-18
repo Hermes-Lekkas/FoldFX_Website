@@ -8,7 +8,7 @@
    - Runs once at load (harmless while the download card is hidden) and
      again the moment the gate unlocks a tester (window.FXBetaProbe is
      called by js/beta-gate.js): the download button activates only when
-     downloads/FoldFX-0.2.5-release.apk actually exists on the deployed
+     downloads/FoldFX-0.2.6-release.apk actually exists on the deployed
      site, so nobody ever hits a dead link.
 
    Tester talk (giscus)
@@ -48,7 +48,7 @@
 
   window.FXBetaProbe = function () {
     try {
-      fetch("downloads/FoldFX-0.2.5-release.apk", { method: "HEAD" })
+      fetch("downloads/FoldFX-0.2.6-release.apk", { method: "HEAD" })
         .then(function (r) { state(r.ok); })
         .catch(function () { state(false); });
     } catch (e) { state(false); }

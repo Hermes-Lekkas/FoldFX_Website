@@ -1,7 +1,8 @@
 # FoldFX downloads — SHA-256 checksums
 # Verify before installing: sha256sum <file> (Linux/macOS) or certutil -hashfile <file> SHA256 (Windows)
-# This build is byte-identical to the FoldFX-0.2.5-signed.apk asset on the FoldFX GitHub release.
-# Note: the release signing key was rotated in 0.2.4 — if you have 0.2.3 or older installed,
-# uninstall it before updating (Android refuses in-place updates across signing identities).
+# This build is byte-identical to the FoldFX-0.2.6-signed.apk asset on the FoldFX GitHub release.
+# Note: the release signing key was rotated AGAIN for 0.2.6 — if you have 0.2.5 or older
+# installed, uninstall it before updating (Android refuses in-place updates across signing
+# identities). License keys are unaffected and re-activate as normal.
 
-63edce4c3a1da19b25c83e3b6eea6abbc38d4ba5b9830bdc3bb57860a44fdad3  FoldFX-0.2.5-release.apk  (0.2.5 / versionCode 7, release-signed — the same build buyers receive)
+6d42a3c4f09f4b5ffb73bd2b463a3dbf557113c07cdff1a41cb4a82bde279698  FoldFX-0.2.6-release.apk  (0.2.6 / versionCode 8, release-signed — the same build buyers receive)
