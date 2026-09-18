@@ -20,7 +20,7 @@
   --border-strong: rgba(255, 255, 255, 0.16);
   --text: #f4f4f6;
   --muted: #a3a3ad;
-  --faint: #6e6e78;
+  --faint: #87878f;
   --silver-1: #ffffff;
   --silver-2: #c9ccd4;
   --silver-3: #8f939c;
@@ -1523,6 +1523,23 @@ html.fx-boot body { visibility: hidden; }
 
 /* Index — closed-beta CTA inside the get panel */
 .get-beta-sub { margin-top: 10px; color: var(--faint); font-size: 0.86rem; text-align: center; }
+
+/* buy-section assurance, payment badges and social proof */
+.get-assure { margin-top: 14px; color: var(--muted); font-size: 0.87rem; text-align: center; }
+.get-pay { margin-top: 12px; display: flex; gap: 7px; justify-content: center; align-items: center; flex-wrap: wrap; }
+.pay-badge {
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 3px 9px;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.03);
+  white-space: nowrap;
+}
+.get-pay-note { margin-left: 4px; color: var(--faint); font-size: 0.76rem; }
+.get-proof { margin-top: 14px; color: var(--muted); font-size: 0.87rem; text-align: center; max-width: 620px; margin-left: auto; margin-right: auto; }
 
 /* ==========================================================================
    Cookie consent banner (js/consent.js) — bottom card, RTL-safe

@@ -6,7 +6,7 @@
   <!-- Security: strict CSP. Scripts only from this site (+GA4/giscus when
        consented); connections only to the services this site actually uses;
        no objects, no framing, no form hijacking. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://giscus.app; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formsubmit.co https://abacus.jasoncameron.dev https://api.polar.sh https://www.google-analytics.com https://region1.google-analytics.com https://region2.google-analytics.com; frame-src https://giscus.app; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co https://buy.polar.sh">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://giscus.app https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formsubmit.co https://abacus.jasoncameron.dev https://api.polar.sh https://www.google-analytics.com https://region1.google-analytics.com https://region2.google-analytics.com; frame-src https://giscus.app https://buy.polar.sh https://polar.sh; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co https://buy.polar.sh">
   <!-- Privacy: cross-origin requests reveal only the site origin, never the
        full page URL. -->
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -479,7 +479,7 @@
             <h2 class="grad-text" data-i18n="get.h2">The fold, in your hands.</h2>
             <p class="get-sub" data-i18n="get.p">FoldFX is here. Buy it once, download it straight from this site and keep it forever — no store, no subscription. The live demo above is the real transition.</p>
             <div class="get-actions">
-              <a class="btn btn-primary btn-lg" href="https://buy.polar.sh/polar_cl_dkIh9Yh0EHWFHySRn7WnlerIILo9usMcF6Ubq0ctrPz" rel="noopener noreferrer" data-analytics="get-buy" data-i18n-attr="title:get.buy.title">
+              <a class="btn btn-primary btn-lg" href="https://buy.polar.sh/polar_cl_dkIh9Yh0EHWFHySRn7WnlerIILo9usMcF6Ubq0ctrPz" rel="noopener noreferrer" data-analytics="get-buy" data-polar-checkout data-polar-checkout-theme="dark" data-i18n-attr="title:get.buy.title">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><path d="M2.5 10h19"/></svg>
                 <span data-i18n="get.buy">Buy FoldFX — €4.99</span>
               </a>
@@ -488,8 +488,20 @@
                 <span data-i18n="get.beta">Join the closed beta</span>
               </a>
             </div>
-            <p class="get-beta-sub" data-i18n="get.buy.sub">One-time payment · one key = one device · no subscription, no free trial — try the live demo above</p>
+            <p class="get-beta-sub" data-i18n="get.buy.sub">One-time payment · one key, move it between devices anytime · no subscription, no free trial — try the live demo above</p>
+            <p class="get-assure" data-i18n="get.refund">Hassle-free refunds — if it doesn't work on your device, Polar handles your refund.</p>
+            <div class="get-pay">
+              <span class="pay-badge" aria-hidden="true">VISA</span>
+              <span class="pay-badge" aria-hidden="true">Mastercard</span>
+              <span class="pay-badge" aria-hidden="true">AMEX</span>
+              <span class="pay-badge" aria-hidden="true">Apple Pay</span>
+              <span class="pay-badge" aria-hidden="true">Google Pay</span>
+              <span class="get-pay-note" data-i18n="get.pay">Secure checkout by Polar</span>
+            </div>
             <p class="get-beta-sub" data-i18n="get.beta.sub">Prefer to test first? Request beta access — every request is reviewed by hand, and approved testers get the same signed APK.</p>
+            <!-- Social proof: honest default. Swap in a real tester quote or
+                 user count here once available (e.g. "Trusted by N foldable owners"). -->
+            <p class="get-proof" data-i18n="get.proof">Built in the open by an independent developer — refined by a hand-picked community of foldable testers.</p>
             <ul class="trust-row" aria-label="Why you can trust FoldFX" data-i18n-attr="aria-label:trust.label">
               <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/></svg><span data-i18n="trust.1">On-device only</span></li>
               <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm-7 8a7 7 0 0 1 14 0z"/></svg><span data-i18n="trust.2">No account needed</span></li>
@@ -559,6 +571,13 @@
 
   <script src="js/i18n/languages.js"></script>
   <script src="js/i18n/i18n.js"></script>
+  <!-- Polar embedded checkout: opens the buy link as an in-page overlay.
+       Falls back to a normal redirect to buy.polar.sh if this script fails. -->
+  <script defer data-auto-init src="https://cdn.jsdelivr.net/npm/@polar-sh/checkout@latest/dist/embed.global.js"></script>
+  <!-- Safety net: if Polar rejects the embed (site origin not yet allow-listed
+       in the Polar dashboard), open the hosted checkout instead of leaving the
+       visitor stuck on a blank overlay. -->
+  <script src="js/buy-fallback.js" defer></script>
   <script src="js/main.js"></script>
   <script src="js/config.js"></script>
   <script src="js/consent.js"></script>
