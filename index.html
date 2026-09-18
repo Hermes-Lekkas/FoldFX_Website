@@ -3,28 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Cross-origin request endpoints on this page (anonymous visit counters)
-       expect a full https Referer; this policy keeps those requests accepted
-       from the live site. -->
-  <meta name="referrer" content="no-referrer-when-downgrade">
-  <script>
-    document.documentElement.classList.add("js");
-    /* Boot language guard: if a non-English language is preferred, hide the body
-       until the translated dictionary has been applied (failsafe timeout in i18n.js). */
-    (function () {
-      var L = null;
-      try { L = new URLSearchParams(location.search).get("lang") || localStorage.getItem("foldfx-lang"); } catch (e) {}
-      if (!L) {
-        var c = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || "en"];
-        var codes = ["zh", "hi", "es", "fr", "ar", "bn", "pt", "ru", "ur", "id", "de", "ja", "mr", "te", "el"];
-        for (var i = 0; i < c.length; i++) {
-          var b = String(c[i]).toLowerCase().split("-")[0];
-          if (codes.indexOf(b) > -1) { L = b; break; }
-        }
-      }
-      if (L && L !== "en") document.documentElement.classList.add("fx-boot");
-    })();
-  </script>
+  <!-- Security: strict CSP. Scripts only from this site (+GA4/giscus when
+       consented); connections only to the services this site actually uses;
+       no objects, no framing, no form hijacking. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://giscus.app; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formsubmit.co https://abacus.jasoncameron.dev https://api.polar.sh https://www.google-analytics.com https://region1.google-analytics.com https://region2.google-analytics.com; frame-src https://giscus.app; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co https://buy.polar.sh">
+  <!-- Privacy: cross-origin requests reveal only the site origin, never the
+       full page URL. -->
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script src="js/boot.js"></script>
   <title data-i18n="meta.index.title">FoldFX — Fluid fold transitions for Android foldables</title>
   <meta name="description" content="FoldFX recreates the fluid, hinge-driven fold transition on Android foldables. Angle-driven blending, cinematic blur and a soft light sweep — powered by your phone's real hinge sensor." data-i18n-attr="content:meta.index.desc">
   <meta name="theme-color" content="#050506">
@@ -52,7 +38,7 @@
     "operatingSystem": "Android 8.0+",
     "applicationCategory": "PersonalizationApp",
     "description": "FoldFX recreates the fluid, hinge-driven fold transition on Android foldables using the real hinge-angle sensor.",
-    "author": { "@type": "Person", "name": "Hermes Lekkas" },
+    "author": { "@type": "Organization", "name": "FoldFX" },
     "offers": { "@type": "Offer", "price": "4.99", "priceCurrency": "EUR" },
     "softwareVersion": "0.2.5"
   }
@@ -446,13 +432,36 @@
         <div class="news-card reveal">
           <div class="news-head">
             <span class="eyebrow" data-i18n="news.eyebrow">What's new</span>
-            <span class="news-ver" data-i18n="news.ver">Version 1.0 &middot; Initial release</span>
+            <span class="news-ver" data-i18n="news.ver">Version 0.2.5 &middot; Our biggest upgrade yet</span>
           </div>
           <ul class="news-list">
-            <li data-i18n="news.1">Live, angle-driven fold transition — gradient blur, motion smear and a light sweep synced to the real hinge sensor</li>
-            <li data-i18n="news.2">Live Wallpaper companion: preview, configure and apply the transition to your home screen</li>
-            <li data-i18n="news.3">Manual override slider with quick presets, so any angle can be rehearsed without folding</li>
+            <li data-i18n="news.1">Your battery lasts longer — FoldFX now goes to sleep the moment your phone is still, instead of quietly staying awake in the background.</li>
+            <li data-i18n="news.2">It just keeps working — in 0.2.4 the fold effect could stop responding until you restarted the app; 0.2.5 ends that for good.</li>
+            <li data-i18n="news.3">The fold looks more real — deeper shading in the crease and a soft gleam of light make the bend feel like glass and metal, not pixels.</li>
+            <li data-i18n="news.4">Fewer hiccups — random ripples, stutters and rare crashes reported on some phones are gone.</li>
           </ul>
+          <div class="news-vs" role="group" aria-label="0.2.4 compared to 0.2.5">
+            <div class="news-vs-head">
+              <span class="news-vs-old" data-i18n="news.vs.old">0.2.4</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+              <span class="news-vs-new" data-i18n="news.vs.new">0.2.5</span>
+            </div>
+            <div class="news-vs-row">
+              <span class="news-vs-cat" data-i18n="news.vs.1c">Battery</span>
+              <span class="news-vs-was" data-i18n="news.vs.1o">Could quietly drain power while your phone sat still</span>
+              <span class="news-vs-now" data-i18n="news.vs.1n">Sleeps the moment you stop — noticeably kinder to your battery</span>
+            </div>
+            <div class="news-vs-row">
+              <span class="news-vs-cat" data-i18n="news.vs.2c">Reliability</span>
+              <span class="news-vs-was" data-i18n="news.vs.2o">The effect could freeze until you restarted the app</span>
+              <span class="news-vs-now" data-i18n="news.vs.2n">Stays alive day in, day out — no restarts, no dead screens</span>
+            </div>
+            <div class="news-vs-row">
+              <span class="news-vs-cat" data-i18n="news.vs.3c">The fold look</span>
+              <span class="news-vs-was" data-i18n="news.vs.3o">Flatter crease with plain shading</span>
+              <span class="news-vs-now" data-i18n="news.vs.3n">A deeper, more lifelike crease with a soft light sweep</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -463,10 +472,6 @@
         <div class="get-panel reveal">
           <div class="get-aurora" aria-hidden="true"><i></i><i></i><i></i></div>
           <div class="get-inner">
-            <div class="get-badge">
-              <i class="get-pulse" aria-hidden="true"></i>
-              <span data-i18n="get.soon">Available now</span>
-            </div>
             <div class="get-icon-wrap">
               <i class="get-halo" aria-hidden="true"></i>
               <img src="assets/foldfx-icon.png" alt="" width="104" height="104" class="get-icon">
@@ -474,7 +479,7 @@
             <h2 class="grad-text" data-i18n="get.h2">The fold, in your hands.</h2>
             <p class="get-sub" data-i18n="get.p">FoldFX is here. Buy it once, download it straight from this site and keep it forever — no store, no subscription. The live demo above is the real transition.</p>
             <div class="get-actions">
-              <a class="btn btn-primary btn-lg" href="https://buy.polar.sh/polar_cl_dkIh9Yh0EHWFHySRn7WnlerIILo9usMcF6Ubq0ctrPz" data-analytics="get-buy" data-i18n-attr="title:get.buy.title">
+              <a class="btn btn-primary btn-lg" href="https://buy.polar.sh/polar_cl_dkIh9Yh0EHWFHySRn7WnlerIILo9usMcF6Ubq0ctrPz" rel="noopener noreferrer" data-analytics="get-buy" data-i18n-attr="title:get.buy.title">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><path d="M2.5 10h19"/></svg>
                 <span data-i18n="get.buy">Buy FoldFX — €4.99</span>
               </a>
@@ -535,7 +540,7 @@
         </nav>
       </div>
       <div class="footer-bottom">
-        <p data-i18n="foot.rights">© <span id="year">2026</span> Hermes Lekkas. All rights reserved.</p>
+        <p data-i18n="foot.rights">© <span id="year">2026</span> FoldFX. All rights reserved.</p>
         <p class="footer-disclaimer" data-i18n="foot.disclaimer">FoldFX is an independent project. All third-party product names, logos and brands mentioned are the property of their respective owners and are used for identification purposes only.</p>
       </div>
     </div>

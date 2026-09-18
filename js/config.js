@@ -50,6 +50,14 @@ window.FOLDFX = {
   /* Where signup emails are delivered — this is "me" for the notify flow. */
   notifyEmail: "FoldFX@protonmail.com",
 
+  /* Polar payments — the public organization id scopes the thank-you page's
+     license-key checker to FoldFX keys. This is NOT a secret: Polar's
+     customer-portal validate endpoint is documented for public client use
+     (the Android app ships the same id), and the id alone grants no powers
+     — it cannot list, create, change or revoke keys. Leave empty to disable
+     the on-page key check (the app's own activation is unaffected). */
+  polarOrgId: "7b86ad3e-845d-4638-a086-d0bd9eee5def",
+
   /* "auto" = one-click FormSubmit delivery to notifyEmail (default),
      with automatic fallback to the visitor's email app on any failure.
      ""    = always use the visitor's email app (zero third-party calls).

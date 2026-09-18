@@ -3,24 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-    document.documentElement.classList.add("js");
-    /* Boot language guard: if a non-English language is preferred, hide the body
-       until the translated dictionary has been applied (failsafe timeout in i18n.js). */
-    (function () {
-      var L = null;
-      try { L = new URLSearchParams(location.search).get("lang") || localStorage.getItem("foldfx-lang"); } catch (e) {}
-      if (!L) {
-        var c = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || "en"];
-        var codes = ["zh", "hi", "es", "fr", "ar", "bn", "pt", "ru", "ur", "id", "de", "ja", "mr", "te", "el"];
-        for (var i = 0; i < c.length; i++) {
-          var b = String(c[i]).toLowerCase().split("-")[0];
-          if (codes.indexOf(b) > -1) { L = b; break; }
-        }
-      }
-      if (L && L !== "en") document.documentElement.classList.add("fx-boot");
-    })();
-  </script>
+  <!-- Security: strict CSP. Scripts only from this site (+GA4/giscus when
+       consented); connections only to the services this site actually uses;
+       no objects, no framing, no form hijacking. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://giscus.app; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formsubmit.co https://abacus.jasoncameron.dev https://api.polar.sh https://www.google-analytics.com https://region1.google-analytics.com https://region2.google-analytics.com; frame-src https://giscus.app; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co https://buy.polar.sh">
+  <!-- Privacy: cross-origin requests reveal only the site origin, never the
+       full page URL. -->
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script src="js/boot.js"></script>
   <title data-i18n="meta.beta.title">FoldFX — Beta program</title>
   <meta name="description" content="Request access to the FoldFX beta for Android foldables — every request is reviewed by hand, and approved testers download the signed, checksum-verified APK." data-i18n-attr="content:meta.beta.desc">
   <meta name="theme-color" content="#050506">
@@ -184,7 +174,7 @@
         </nav>
       </div>
       <div class="footer-bottom">
-        <p data-i18n="foot.rights">© <span id="year">2026</span> Hermes Lekkas. All rights reserved.</p>
+        <p data-i18n="foot.rights">© <span id="year">2026</span> FoldFX. All rights reserved.</p>
         <p class="footer-disclaimer" data-i18n="foot.disclaimer">FoldFX is an independent project. All third-party product names, logos and brands mentioned are the property of their respective owners and are used for identification purposes only.</p>
       </div>
     </div>
@@ -198,105 +188,6 @@
   <script src="js/beta-gate.js"></script>
   <script src="js/consent.js"></script>
   <script src="js/analytics.js"></script>
-  <script>
-    (function () {
-      "use strict";
-
-      /* ---------- beta APK availability ----------
-         Runs once at load (harmless while the card is hidden) and again
-         the moment the gate unlocks a tester: the download activates only
-         when downloads/FoldFX-0.2.5-release.apk actually exists on the
-         deployed site, so nobody ever hits a dead link. */
-      var btn = document.getElementById("betaDlBtn");
-      var soon = document.getElementById("betaDlSoon");
-      var row = document.getElementById("betaChecksumRow");
-      var probed = false;
-
-      function gate(e) {
-        if (btn && btn.getAttribute("aria-disabled") === "true") e.preventDefault();
-      }
-      if (btn) btn.addEventListener("click", gate);
-
-      function state(ready) {
-        if (!btn) return;
-        if (ready) {
-          btn.removeAttribute("aria-disabled");
-          if (soon) soon.hidden = true;
-          if (row) row.hidden = false;
-        } else {
-          btn.setAttribute("aria-disabled", "true");
-          if (soon) soon.hidden = false;
-          if (row) row.hidden = true;
-        }
-      }
-
-      window.FXBetaProbe = function () {
-        try {
-          fetch("downloads/FoldFX-0.2.5-release.apk", { method: "HEAD" })
-            .then(function (r) { probed = true; state(r.ok); })
-            .catch(function () { state(false); });
-        } catch (e) { state(false); }
-      };
-      window.FXBetaProbe();
-
-      /* ---------- tester talk (giscus) ----------
-         Conversations are powered by giscus (GitHub Discussions under the
-         hood): threaded replies, reactions, no tracking, no ads, and the
-         developer moderates every thread. To finish setup:
-           1) Repo Settings → General → Features → check "Discussions"
-           2) Install https://github.com/apps/giscus on the website repo
-           3) Paste the "Announcements" category ID below (get it from
-              https://giscus.app by entering the repo and picking the
-              category). The board activates itself once the ID is set. */
-      var GISCUS = {
-        repo: "Hermes-Lekkas/FoldFX_Website",
-        repoId: "R_kgDOUbdb3A",
-        category: "Announcements",
-        categoryId: "DIC_kwDO_REPLACE_ME" /* ← replace to activate */
-      };
-
-      /* giscus speaks most of the site's languages; the rest fall back. */
-      var GISCUS_LANG = {
-        en: "en", es: "es", fr: "fr", de: "de", ar: "ar", bn: "bn",
-        ru: "ru", pt: "pt", id: "id", ja: "ja", zh: "zh-CN", hi: "hi",
-        el: "el", ur: "en", mr: "en", te: "en"
-      };
-
-      var thread = document.getElementById("giscusThread");
-      var wait = document.getElementById("giscusWait");
-
-      function giscusLang(code) { return GISCUS_LANG[code] || "en"; }
-      function giscusReady() {
-        return GISCUS.categoryId && GISCUS.categoryId.indexOf("REPLACE") === -1;
-      }
-
-      function loadGiscus() {
-        if (!thread) return;
-        if (!giscusReady()) { if (wait) wait.hidden = false; return; }
-        if (wait) wait.hidden = true;
-        thread.innerHTML = "";
-        var s = document.createElement("script");
-        s.src = "https://giscus.app/client.js";
-        s.async = true;
-        s.crossOrigin = "anonymous";
-        s.setAttribute("data-repo", GISCUS.repo);
-        s.setAttribute("data-repo-id", GISCUS.repoId);
-        s.setAttribute("data-category", GISCUS.category);
-        s.setAttribute("data-category-id", GISCUS.categoryId);
-        s.setAttribute("data-mapping", "pathname");
-        s.setAttribute("data-strict", "1");
-        s.setAttribute("data-reactions-enabled", "1");
-        s.setAttribute("data-emit-metadata", "0");
-        s.setAttribute("data-input-position", "top");
-        s.setAttribute("data-theme", "transparent_dark");
-        s.setAttribute("data-lang", giscusLang(window.FXLang ? window.FXLang.get() : "en"));
-        s.setAttribute("data-loading", "lazy");
-        thread.appendChild(s);
-      }
-
-      if (window.FXLang) window.FXLang.onChange(function () { loadGiscus(); });
-      loadGiscus();
-    })();
-  </script>
+  <script src="js/beta-probe.js"></script>
 </body>
 </html>

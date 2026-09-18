@@ -885,47 +885,6 @@ input[type="range"]::-moz-range-thumb {
 
 .get-inner { position: relative; }
 
-.get-badge {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 9px 20px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.17);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.028));
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--silver-2);
-  overflow: hidden;
-  margin-bottom: 32px;
-}
-/* slow shimmer sweep across the pill (transform-only) */
-.get-badge::after {
-  content: "";
-  position: absolute;
-  top: 0; bottom: 0; left: 0; width: 45%;
-  transform: translateX(-140%) skewX(-18deg);
-  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.14), transparent);
-  animation: getShineBadge 5.2s ease-in-out infinite;
-  pointer-events: none;
-}
-@keyframes getShineBadge { 0%, 58% { transform: translateX(-140%) skewX(-18deg); } 96%, 100% { transform: translateX(310%) skewX(-18deg); } }
-
-.get-pulse { position: relative; width: 8px; height: 8px; border-radius: 50%; background: #e9ebef; flex: none; }
-.get-pulse::before, .get-pulse::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: rgba(233, 235, 239, 0.65);
-  animation: getPulse 2.4s ease-out infinite;
-}
-.get-pulse::after { animation-delay: 1.2s; }
-@keyframes getPulse { 0% { transform: scale(1); opacity: 0.85; } 75%, 100% { transform: scale(3.4); opacity: 0; } }
-
 .get-icon-wrap { position: relative; width: 104px; margin: 0 auto 32px; }
 .get-icon {
   position: relative;
@@ -1208,8 +1167,15 @@ input[type="range"]::-moz-range-thumb {
   inset-inline-end: 0;
   z-index: 80;
   width: 252px;
-  max-height: min(430px, 62vh);
+  /* 16 languages in 2 columns fit without scrolling on desktop; on short
+     viewports the menu still scrolls (wheel/touch) but never shows a
+     chunky native scrollbar inside the dropdown. */
+  max-height: min(520px, calc(100vh - 140px));
+  max-height: min(520px, calc(100dvh - 140px)); /* dvh: mobile browser chrome */
   overflow: auto;
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* legacy Edge */
+  overscroll-behavior: contain;   /* menu scroll never drags the page */
   padding: 8px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1220,6 +1186,19 @@ input[type="range"]::-moz-range-thumb {
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
 }
 .lang-menu[hidden] { display: none; }
+.lang-menu::-webkit-scrollbar { display: none; } /* Chrome / Safari / Edge */
+
+/* Subtle bottom fade hints at more languages when the menu does scroll. */
+.lang-menu::after {
+  content: "";
+  position: sticky;
+  bottom: -8px;
+  grid-column: 1 / -1;
+  height: 26px;
+  margin-top: -26px;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(10, 10, 13, 0.95), transparent);
+}
 
 .lang-item {
   display: flex;
@@ -1377,6 +1356,42 @@ html.fx-boot body { visibility: hidden; }
 .news-list li { position: relative; padding-inline-start: 26px; color: var(--muted); line-height: 1.6; font-size: 0.95rem; }
 .news-list li::before { content: "✓"; position: absolute; inset-inline-start: 0; top: 0; color: #d7dbe1; font-weight: 700; }
 
+/* 0.2.4 → 0.2.5 at-a-glance comparison */
+.news-vs { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
+.news-vs-head {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  font-family: var(--mono); font-size: 0.82rem; margin-bottom: 4px;
+}
+.news-vs-head .news-vs-old { color: var(--faint); font-weight: 700; letter-spacing: 0.06em; }
+.news-vs-head svg { color: var(--faint); flex: none; }
+.news-vs-head .news-vs-new {
+  color: var(--silver-1); font-weight: 700; letter-spacing: 0.06em;
+  padding: 4px 12px; border-radius: 999px;
+  background: var(--panel-strong);
+  border: 1px solid var(--border-strong);
+}
+.news-vs-row {
+  display: grid;
+  grid-template-columns: 108px 1fr 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.news-vs-cat {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--faint);
+}
+.news-vs-was { color: var(--faint); font-size: 0.86rem; line-height: 1.5; }
+.news-vs-now { color: var(--text); font-size: 0.9rem; font-weight: 600; line-height: 1.5; }
+.news-vs-row .news-vs-now { position: relative; padding-inline-start: 20px; }
+.news-vs-row .news-vs-now::before {
+  content: "✓"; position: absolute; inset-inline-start: 0; top: 0;
+  color: #d7dbe1; font-weight: 700;
+}
+
 /* ==========================================================================
    Trust strip + early-access line (download panel)
    ========================================================================== */
@@ -1402,6 +1417,11 @@ html.fx-boot body { visibility: hidden; }
   .media-grid { gap: 20px; }
   .media-shot .media-zoom { max-width: 300px; padding: 9px; border-radius: 32px; }
   .media-shot .media-zoom img { border-radius: 23px; }
+  /* comparison rows: was/now stack under the category label */
+  .news-vs-row { grid-template-columns: 1fr; gap: 6px; padding: 12px 14px 14px; }
+  .news-vs-cat { margin-bottom: 2px; }
+  .news-vs-was { padding-inline-start: 20px; position: relative; }
+  .news-vs-was::before { content: "–"; position: absolute; inset-inline-start: 2px; color: var(--faint); font-weight: 700; }
 }
 
 @media (max-width: 640px) {
