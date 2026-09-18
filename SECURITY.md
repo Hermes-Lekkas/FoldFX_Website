@@ -123,5 +123,5 @@ installing. Deliberate design decisions:
 
 ## 6. Reporting
 
-Security reports: **FoldFX@protonmail.com** (also linked from the beta page
+Security reports: **foldfx.contact@gmail.com** (also linked from the beta page
 as the private channel — asked for there instead of public posting).

@@ -7,7 +7,7 @@
      so the public repository never exposes tester addresses.
    - beta.html computes the SHA-256 of the email a visitor enters and
      unlocks the APK download only if it matches an entry below.
-   - Requests arrive by email (FormSubmit -> FoldFX@protonmail.com); the
+   - Requests arrive by email (FormSubmit -> foldfx.contact@gmail.com); the
      developer decides who is eligible.
 
    HOW TO APPROVE SOMEONE

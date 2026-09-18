@@ -8,7 +8,7 @@
    no API key, no build step:
 
      1. The form posts the signup to FormSubmit.co, a free form-delivery
-        service, which emails it to notifyEmail (FoldFX@protonmail.com).
+        service, which emails it to notifyEmail (foldfx.contact@gmail.com).
      2. Each signup email states the running opt-in count (the waitlist
         number) in its subject line and body, e.g.:
             Subject: FoldFX launch opt-in #12 — 12 on the waitlist
@@ -48,7 +48,7 @@
 
 window.FOLDFX = {
   /* Where signup emails are delivered — this is "me" for the notify flow. */
-  notifyEmail: "FoldFX@protonmail.com",
+  notifyEmail: "foldfx.contact@gmail.com",
 
   /* Polar payments — the public organization id scopes the thank-you page's
      license-key checker to FoldFX keys. This is NOT a secret: Polar's

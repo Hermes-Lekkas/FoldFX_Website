@@ -2,7 +2,7 @@
    FoldFX website — Indonesian dictionary (Bahasa Indonesia)
    Key-for-key mirror of en.js. Keep balanced markup, {year}, technical
    identifiers (Kotlin, Jetpack Compose, Sensor.TYPE_HINGE_ANGLE, DataStore
-   Preferences, Android 12, API 31, GDPR), FoldFX@protonmail.com and
+   Preferences, Android 12, API 31, GDPR), foldfx.contact@gmail.com and
    punctuation · — ° ✓ ✕. Local quotes: “ ”.
    ========================================================================== */
 
@@ -194,7 +194,7 @@
     "beta.dl": "Unduh APK beta",
     "beta.dl.soon": "Build sedang diunggah — kembali lagi sebentar.",
     "beta.dl.note": "Build rilis 0.2.6 · ditandatangani dengan benar dan diperkecil R8 · satu kunci = satu perangkat",
-    "beta.dl.compat": "Sebelum memasang: FoldFX masih beta dan mungkin bermasalah di sebagian perangkat — perilaku engsel, wallpaper hidup, dan overlay eksperimental bisa berbeda (atau berperilaku aneh) tiap model ponsel lipat dan versi Android. Jika ada yang tidak beres, sampaikan di Tester talk di bawah (atau email FoldFX@protonmail.com) — laporan Anda membentuk build berikutnya.",
+    "beta.dl.compat": "Sebelum memasang: FoldFX masih beta dan mungkin bermasalah di sebagian perangkat — perilaku engsel, wallpaper hidup, dan overlay eksperimental bisa berbeda (atau berperilaku aneh) tiap model ponsel lipat dan versi Android. Jika ada yang tidak beres, sampaikan di Tester talk di bawah (atau email foldfx.contact@gmail.com) — laporan Anda membentuk build berikutnya.",
     "beta.checksum.hint": "Setiap build dilengkapi checksum SHA-256 di <a href=\"downloads/checksums.txt\">checksums.txt</a> — verifikasi filenya sebelum memasang.",
     "beta.install.h3": "Pasang dalam empat langkah",
     "beta.step1": "Ketuk tombol unduh di atas dan tunggu APK selesai diunduh.",
@@ -207,7 +207,7 @@
     "beta.talk.h3": "Obrolan penguji",
     "beta.talk.p": "Laporkan apa yang Anda lihat, bagikan ide penyetelan, atau bertanya ke penguji lain — percakapan berlangsung di sini, di halaman ini.",
     "beta.talk.wait": "Papan komunitas dibuka bersama build beta publik pertama.",
-    "beta.private": "Menemukan crash atau masalah keamanan? Mohon kirimkan <a href=\"mailto:FoldFX@protonmail.com\">lewat email secara privat</a> alih-alih mempostingnya terbuka — terima kasih.",
+    "beta.private": "Menemukan crash atau masalah keamanan? Mohon kirimkan <a href=\"mailto:foldfx.contact@gmail.com\">lewat email secara privat</a> alih-alih mempostingnya terbuka — terima kasih.",
     "beta.gate.h": "Ajukan akses beta",
     "beta.gate.p": "Beta ini hanya dengan undangan. Masukkan email Anda untuk mengajukan akses — setiap permintaan ditinjau satu per satu, dan tidak semua orang diterima. Setelah disetujui, halaman inilah yang membuka unduhan.",
     "beta.gate.label": "Alamat email",
@@ -296,7 +296,7 @@
     "priv.9p": "Jika versi Aplikasi di masa mendatang menghadirkan fitur yang mengubah cara informasi ditangani — misalnya, fungsionalitas cloud opsional — kebijakan ini akan diperbarui untuk menjelaskan perubahan tersebut sebelum pembaruan terkait dirilis, dan “tanggal efektif” di bagian atas halaman ini akan direvisi. Perubahan material juga akan dirangkum dalam catatan rilis Aplikasi. Penggunaan Aplikasi yang berlanjut setelah kebijakan yang diperbarui berlaku merupakan penerimaan atas kebijakan yang direvisi.",
     "priv.10h": "10. Kontak",
     "priv.10p": "Jika Anda memiliki pertanyaan, kekhawatiran, atau permintaan terkait Kebijakan Privasi ini, hubungi Pengembang:",
-    "priv.10l": "Surel: <a href=\"mailto:FoldFX@protonmail.com\">FoldFX@protonmail.com</a>",
+    "priv.10l": "Surel: <a href=\"mailto:foldfx.contact@gmail.com\">foldfx.contact@gmail.com</a>",
 
     /* ---------- terms of service ---------- */
     "terms.eyebrow": "Legal",
@@ -332,7 +332,7 @@
     "terms.11p": "Kami dapat memperbarui Aplikasi dan Ketentuan ini dari waktu ke waktu. Ketika Ketentuan ini berubah, “tanggal efektif” di bagian atas halaman ini akan direvisi, dan penggunaan Aplikasi yang berlanjut setelah tanggal efektif baru merupakan penerimaan atas Ketentuan yang diperbarui. Jika perubahan bersifat material, kami juga akan mencatatkannya di catatan rilis Aplikasi. Jika Anda tidak menyetujui Ketentuan yang diperbarui, Anda sebaiknya berhenti menggunakan Aplikasi dan meng-uninstall-nya.",
     "terms.12h": "12. Kontak",
     "terms.12p": "Pertanyaan tentang Ketentuan ini dapat dikirimkan kepada Pengembang:",
-    "terms.12l": "Surel: <a href=\"mailto:FoldFX@protonmail.com\">FoldFX@protonmail.com</a>",
+    "terms.12l": "Surel: <a href=\"mailto:foldfx.contact@gmail.com\">foldfx.contact@gmail.com</a>",
 
     /* ---------- 404 ---------- */
     "nf.p": "Sepertinya halaman ini terlipat dan lenyap.",
@@ -364,12 +364,12 @@
     "ty.verify.bad": "Kunci itu tidak dikenali. Periksa kembali bahwa Anda menyalin kunci lisensi (bukan nomor faktur) dari 'Access purchase' di struk Polar.",
     "ty.verify.err": "Kami tidak dapat menghubungi layanan pembayaran saat ini — kunci Anda tidak bermasalah; coba lagi sebentar lagi.",
     "ty.verify.short": "Sepertinya terlalu pendek — kunci lisensi adalah kode yang panjang. Salin kunci lengkap dari struk Polar Anda.",
-    "ty.verify.revoked": "Kunci ini ada tetapi tidak lagi aktif — biasanya karena pembayarannya telah dikembalikan. Email FoldFX@protonmail.com dan kami akan bereskan.",
+    "ty.verify.revoked": "Kunci ini ada tetapi tidak lagi aktif — biasanya karena pembayarannya telah dikembalikan. Email foldfx.contact@gmail.com dan kami akan bereskan.",
     "ty.dl": "Unduh FoldFX (APK bertanda tangan)",
     "ty.dl.note": "FoldFX-0.2.6-release.apk · Android 8.0+ · bertanda tangan rilis · verifikasi dengan <a href=\\\"downloads/checksums.txt\\\">checksums.txt</a>",
-    "ty.dl.compat": "Catatan jujur: FoldFX masih beta dan mungkin bermasalah di sebagian perangkat — perilaku engsel, wallpaper hidup, dan overlay eksperimental bisa berbeda tiap model ponsel lipat dan versi Android. Jika ada yang bermasalah, email FoldFX@protonmail.com — perbaikan hadir sebagai pembaruan gratis.",
+    "ty.dl.compat": "Catatan jujur: FoldFX masih beta dan mungkin bermasalah di sebagian perangkat — perilaku engsel, wallpaper hidup, dan overlay eksperimental bisa berbeda tiap model ponsel lipat dan versi Android. Jika ada yang bermasalah, email foldfx.contact@gmail.com — perbaikan hadir sebagai pembaruan gratis.",
     "ty.migrate": "Sudah terpasang 0.2.5 atau lebih lama? Copot sebelum memasang versi ini — kunci penandatanganan dirotasi lagi dan Android menolak pembaruan langsung antar identitas berbeda. Kunci lisensi Anda tetap berlaku dan dapat diaktifkan kembali di perangkat yang sama.",
-    "ty.help": "Ada yang salah? Email FoldFX@protonmail.com dan kami bereskan.",
+    "ty.help": "Ada yang salah? Email foldfx.contact@gmail.com dan kami bereskan.",
     "ty.back": "Kembali ke beranda",
   };
 })(typeof window !== "undefined" ? window : globalThis);

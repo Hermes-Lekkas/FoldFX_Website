@@ -16,7 +16,7 @@
       prefill for convenience.
 
    Privacy: the only network call is the FormSubmit request for NOT-yet-
-   approved visitors (the email goes to FoldFX@protonmail.com, exactly like
+   approved visitors (the email goes to foldfx.contact@gmail.com, exactly like
    the waitlist form). Approved visitors trigger no request at all.
    ========================================================================== */
 
@@ -24,7 +24,7 @@
   "use strict";
 
   var cfg = w.FOLDFX || {};
-  var EMAIL = String(cfg.notifyEmail || "FoldFX@protonmail.com");
+  var EMAIL = String(cfg.notifyEmail || "foldfx.contact@gmail.com");
   var FORMSUBMIT = "https://formsubmit.co/ajax/";
   var PREFILL_KEY = "foldfx-beta-email";
   var TIMEOUT_MS = 12000;

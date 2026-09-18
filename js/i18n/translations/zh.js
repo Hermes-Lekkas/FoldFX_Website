@@ -191,7 +191,7 @@
     "beta.dl": "下载 Beta APK",
     "beta.dl.soon": "构建正在上传中——请稍后再来查看。",
     "beta.dl.note": "正式版构建 0.2.6 · 正确签名并经 R8 精简 · 一个密钥 = 一台设备",
-    "beta.dl.compat": "安装前请注意：FoldFX 仍处于测试版，可能在部分设备上存在问题——铰链行为、动态壁纸与实验性叠加层可能因折叠屏型号和 Android 版本不同而表现不一甚至失灵。如果遇到问题，请在下方 Tester talk 中反馈（或发送邮件至 FoldFX@protonmail.com）——您的报告将帮助改进下一个版本。",
+    "beta.dl.compat": "安装前请注意：FoldFX 仍处于测试版，可能在部分设备上存在问题——铰链行为、动态壁纸与实验性叠加层可能因折叠屏型号和 Android 版本不同而表现不一甚至失灵。如果遇到问题，请在下方 Tester talk 中反馈（或发送邮件至 foldfx.contact@gmail.com）——您的报告将帮助改进下一个版本。",
     "beta.checksum.hint": "每个构建都附带 <a href=\"downloads/checksums.txt\">checksums.txt</a> 中的 SHA-256 校验和——安装前请先验证文件。",
     "beta.install.h3": "四步完成安装",
     "beta.step1": "点击上方的下载按钮，等待 APK 下载完成。",
@@ -204,7 +204,7 @@
     "beta.talk.h3": "测试者交流",
     "beta.talk.p": "报告你看到的现象、分享调校想法，或向其他测试者提问 — 交流就在本页进行。",
     "beta.talk.wait": "社区留言板将随首个公开 Beta 构建一同开放。",
-    "beta.private": "发现了崩溃或安全问题？请<a href=\"mailto:FoldFX@protonmail.com\">通过邮件私下报告</a>，而不是公开发帖 — 谢谢。",
+    "beta.private": "发现了崩溃或安全问题？请<a href=\"mailto:foldfx.contact@gmail.com\">通过邮件私下报告</a>，而不是公开发帖 — 谢谢。",
     "beta.gate.h": "申请测试版 access",
     "beta.gate.p": "测试版仅限受邀参与。输入您的邮箱申请 access——每份申请都会人工审核，并非人人都能通过。获批后，本页面即会解锁下载。",
     "beta.gate.label": "电子邮箱地址",
@@ -293,7 +293,7 @@
     "priv.9p": "如果应用的未来版本引入会改变信息处理方式的功能——例如可选的云功能——本政策将在相应更新发布之前更新以说明这些变化，并且本页顶部的“生效日期”将被修订。重大变更还将在应用的版本说明中概述。更新后的政策生效后，你继续使用应用即表示接受修订后的政策。",
     "priv.10h": "10. 联系方式",
     "priv.10p": "如你对本隐私政策有疑问、顾虑或请求，请联系开发者：",
-    "priv.10l": "电子邮件：<a href=\"mailto:FoldFX@protonmail.com\">FoldFX@protonmail.com</a>",
+    "priv.10l": "电子邮件：<a href=\"mailto:foldfx.contact@gmail.com\">foldfx.contact@gmail.com</a>",
 
     /* ---------- terms of service ---------- */
     "terms.eyebrow": "法律信息",
@@ -329,7 +329,7 @@
     "terms.11p": "我们可能不时更新应用及本条款。当本条款发生变化时，本页顶部的“生效日期”将被修订，新生效日期之后继续使用应用即表示接受更新后的条款。如果变更属于重大变更，我们还会在应用的版本说明中加以注明。如果你不同意更新后的条款，应停止使用应用并将其卸载。",
     "terms.12h": "12. 联系方式",
     "terms.12p": "有关本条款的问题可发送给开发者：",
-    "terms.12l": "电子邮件：<a href=\"mailto:FoldFX@protonmail.com\">FoldFX@protonmail.com</a>",
+    "terms.12l": "电子邮件：<a href=\"mailto:foldfx.contact@gmail.com\">foldfx.contact@gmail.com</a>",
 
     /* ---------- 404 ---------- */
     "nf.p": "看来这个页面被折起来了。",
@@ -361,12 +361,12 @@
     "ty.verify.bad": "无法识别该密钥。请仔细核对：要从 Polar 收据的“Access purchase（查看购买）”里复制许可证密钥，而不是发票编号。",
     "ty.verify.err": "刚刚无法连接支付服务——你的密钥没有问题，请稍后再试。",
     "ty.verify.short": "看起来太短了——许可证密钥是一串较长的代码。请从 Polar 收据中复制完整的密钥。",
-    "ty.verify.revoked": "该密钥存在但已失效——通常是因为对应订单已退款。请发送邮件至 FoldFX@protonmail.com，我们会帮你解决。",
+    "ty.verify.revoked": "该密钥存在但已失效——通常是因为对应订单已退款。请发送邮件至 foldfx.contact@gmail.com，我们会帮你解决。",
     "ty.dl": "下载 FoldFX（签名 APK）",
     "ty.dl.note": "FoldFX-0.2.6-release.apk · 安卓 8.0+ · 发布签名 · 请对照 <a href=\\\"downloads/checksums.txt\\\">checksums.txt</a> 验证",
-    "ty.dl.compat": "一句实话：FoldFX 仍处于测试版，可能在部分设备上存在问题——铰链行为、动态壁纸与实验性叠加层可能因折叠屏型号和 Android 版本不同而表现不一。如遇异常，请发送邮件至 FoldFX@protonmail.com——修复将以免费更新形式发布。",
+    "ty.dl.compat": "一句实话：FoldFX 仍处于测试版，可能在部分设备上存在问题——铰链行为、动态壁纸与实验性叠加层可能因折叠屏型号和 Android 版本不同而表现不一。如遇异常，请发送邮件至 foldfx.contact@gmail.com——修复将以免费更新形式发布。",
     "ty.migrate": "已安装 0.2.5 或更早版本？请先卸载再安装本版本——签名密钥再次更换，Android 不允许跨签名直接覆盖安装。你的许可证密钥依然有效，可在同一设备上重新激活。",
-    "ty.help": "遇到问题？发邮件至 FoldFX@protonmail.com，我们会帮您解决。",
+    "ty.help": "遇到问题？发邮件至 foldfx.contact@gmail.com，我们会帮您解决。",
     "ty.back": "返回首页",
   };
 })(typeof window !== "undefined" ? window : globalThis);

@@ -2,7 +2,7 @@
    FoldFX website — Portuguese dictionary (Português)
    Key-for-key mirror of en.js. Keep balanced markup, {year}, technical
    identifiers (Kotlin, Jetpack Compose, Sensor.TYPE_HINGE_ANGLE, DataStore
-   Preferences, Android 12, API 31, GDPR), FoldFX@protonmail.com and
+   Preferences, Android 12, API 31, GDPR), foldfx.contact@gmail.com and
    punctuation · — ° ✓ ✕. Local quotes: “ ”.
    ========================================================================== */
 
@@ -194,7 +194,7 @@
     "beta.dl": "Baixar o APK beta",
     "beta.dl.soon": "A compilação está sendo enviada — volte em breve.",
     "beta.dl.note": "Build de release 0.2.6 · devidamente assinada e reduzida com R8 · uma chave = um dispositivo",
-    "beta.dl.compat": "Antes de instalar: o FoldFX ainda está em beta e pode ter problemas em alguns dispositivos — o comportamento da dobradiça, o papel de parede ao vivo e a sobreposição experimental podem variar (ou falhar) conforme o modelo dobrável e a versão do Android. Se algo quebrar, conte no Tester talk abaixo (ou escreva para FoldFX@protonmail.com) — os relatos moldam o próximo build.",
+    "beta.dl.compat": "Antes de instalar: o FoldFX ainda está em beta e pode ter problemas em alguns dispositivos — o comportamento da dobradiça, o papel de parede ao vivo e a sobreposição experimental podem variar (ou falhar) conforme o modelo dobrável e a versão do Android. Se algo quebrar, conte no Tester talk abaixo (ou escreva para foldfx.contact@gmail.com) — os relatos moldam o próximo build.",
     "beta.checksum.hint": "Cada compilação vem com um checksum SHA-256 em <a href=\"downloads/checksums.txt\">checksums.txt</a> — verifique o arquivo antes de instalar.",
     "beta.install.h3": "Instale em quatro passos",
     "beta.step1": "Toque no botão de download acima e espere o APK terminar de baixar.",
@@ -207,7 +207,7 @@
     "beta.talk.h3": "Conversa dos testadores",
     "beta.talk.p": "Relate o que vê, compartilhe ideias de ajuste ou pergunte a outros testadores — a conversa acontece aqui, na própria página.",
     "beta.talk.wait": "O mural da comunidade abre junto com a primeira build beta pública.",
-    "beta.private": "Encontrou um travamento ou um problema de segurança? Envie <a href=\"mailto:FoldFX@protonmail.com\">por e-mail em privado</a> em vez de publicar — obrigado.",
+    "beta.private": "Encontrou um travamento ou um problema de segurança? Envie <a href=\"mailto:foldfx.contact@gmail.com\">por e-mail em privado</a> em vez de publicar — obrigado.",
     "beta.gate.h": "Pedir acesso à beta",
     "beta.gate.p": "A beta é apenas por convite. Digite seu e-mail para pedir acesso — cada pedido é revisto à mão, e nem todos são aceitos. Quando for aprovado, esta mesma página desbloqueia o download.",
     "beta.gate.label": "Endereço de e-mail",
@@ -296,7 +296,7 @@
     "priv.9p": "Se uma versão futura do App introduzir recursos que mudem como as informações são tratadas — por exemplo, funcionalidade opcional em nuvem —, esta política será atualizada para descrever essas mudanças antes que a atualização correspondente seja lançada, e a “data de entrada em vigor” no topo desta página será revisada. Mudanças relevantes também serão resumidas nas notas de versão do App. O uso contínuo do App após a vigência de uma política atualizada constitui aceitação da política revisada.",
     "priv.10h": "10. Contato",
     "priv.10p": "Se você tiver perguntas, preocupações ou pedidos sobre esta Política de Privacidade, contate o Desenvolvedor:",
-    "priv.10l": "E-mail: <a href=\"mailto:FoldFX@protonmail.com\">FoldFX@protonmail.com</a>",
+    "priv.10l": "E-mail: <a href=\"mailto:foldfx.contact@gmail.com\">foldfx.contact@gmail.com</a>",
 
     /* ---------- terms of service ---------- */
     "terms.eyebrow": "Jurídico",
@@ -332,7 +332,7 @@
     "terms.11p": "Podemos atualizar o App e estes Termos de tempos em tempos. Quando estes Termos mudarem, a “data de entrada em vigor” no topo desta página será revisada, e o uso contínuo do App após a nova data de entrada em vigor constituirá aceitação dos Termos atualizados. Se uma alteração for relevante, também a indicaremos nas notas de versão do App. Se você não concordar com os Termos atualizados, deve parar de usar o App e desinstalá-lo.",
     "terms.12h": "12. Contato",
     "terms.12p": "Perguntas sobre estes Termos podem ser enviadas ao Desenvolvedor:",
-    "terms.12l": "E-mail: <a href=\"mailto:FoldFX@protonmail.com\">FoldFX@protonmail.com</a>",
+    "terms.12l": "E-mail: <a href=\"mailto:foldfx.contact@gmail.com\">foldfx.contact@gmail.com</a>",
 
     /* ---------- 404 ---------- */
     "nf.p": "Parece que esta página se dobrou e sumiu.",
@@ -364,12 +364,12 @@
     "ty.verify.bad": "Essa chave não foi reconhecida. Verifique novamente se copiou a chave de licença (e não o número da fatura) em 'Access purchase' no seu recibo Polar.",
     "ty.verify.err": "Não conseguimos contactar o serviço de pagamentos agora — a sua chave está bem; tente novamente dentro de momentos.",
     "ty.verify.short": "Isto parece demasiado curto — uma chave de licença é um código longo. Copie a chave completa do seu recibo Polar.",
-    "ty.verify.revoked": "Esta chave existe mas já não está ativa — normalmente porque o respetivo pagamento foi reembolsado. Escreva para FoldFX@protonmail.com e resolvemos isso.",
+    "ty.verify.revoked": "Esta chave existe mas já não está ativa — normalmente porque o respetivo pagamento foi reembolsado. Escreva para foldfx.contact@gmail.com e resolvemos isso.",
     "ty.dl": "Baixar FoldFX (APK assinado)",
     "ty.dl.note": "FoldFX-0.2.6-release.apk · Android 8.0+ · assinado como release · confira com <a href=\\\"downloads/checksums.txt\\\">checksums.txt</a>",
-    "ty.dl.compat": "Uma nota honesta: o FoldFX ainda está em beta e pode ter problemas em alguns dispositivos — o comportamento da dobradiça, o papel de parede ao vivo e a sobreposição experimental podem variar conforme o modelo dobrável e a versão do Android. Se algo falhar, escreva para FoldFX@protonmail.com — as correções chegam como atualizações gratuitas.",
+    "ty.dl.compat": "Uma nota honesta: o FoldFX ainda está em beta e pode ter problemas em alguns dispositivos — o comportamento da dobradiça, o papel de parede ao vivo e a sobreposição experimental podem variar conforme o modelo dobrável e a versão do Android. Se algo falhar, escreva para foldfx.contact@gmail.com — as correções chegam como atualizações gratuitas.",
     "ty.migrate": "Já tem a 0.2.5 ou anterior instalada? Desinstale-a antes desta — a chave de assinatura foi renovada novamente e o Android se recusa a atualizar diretamente entre identidades diferentes. Sua chave de licença continua válida e reativa no mesmo dispositivo.",
-    "ty.help": "Algo deu errado? Escreva para FoldFX@protonmail.com e resolvemos.",
+    "ty.help": "Algo deu errado? Escreva para foldfx.contact@gmail.com e resolvemos.",
     "ty.back": "Voltar à página inicial",
   };
 })(typeof window !== "undefined" ? window : globalThis);

@@ -12,7 +12,7 @@
    - Keep unchanged: "FoldFX", person/company-neutral product wording,
      technical identifiers (Kotlin, Jetpack Compose, Material 3,
      androidx.window, Sensor.TYPE_HINGE_ANGLE, DataStore Preferences,
-     WindowManager, Android 12, API 31, GDPR), "FoldFX@protonmail.com",
+     WindowManager, Android 12, API 31, GDPR), "foldfx.contact@gmail.com",
      punctuation like · — ° ✓ ✕ and the {year} placeholder.
    ========================================================================== */
 
@@ -204,7 +204,7 @@
     "beta.dl": "Download the beta APK",
     "beta.dl.soon": "The build is uploading — check back shortly.",
     "beta.dl.note": "Release build 0.2.6 · properly signed and R8-shrunk · one license key = one device",
-    "beta.dl.compat": "Before you install: FoldFX is still in beta and might have issues on some devices — hinge behavior, the live wallpaper and the experimental overlay can vary or misbehave across foldable models and Android versions. If something breaks, say so in Tester talk below (or email FoldFX@protonmail.com) — reports shape the next build.",
+    "beta.dl.compat": "Before you install: FoldFX is still in beta and might have issues on some devices — hinge behavior, the live wallpaper and the experimental overlay can vary or misbehave across foldable models and Android versions. If something breaks, say so in Tester talk below (or email foldfx.contact@gmail.com) — reports shape the next build.",
     "beta.checksum.hint": "Every build ships with a SHA-256 checksum in <a href=\"downloads/checksums.txt\">checksums.txt</a> — verify the file before installing.",
     "beta.install.h3": "Install in four steps",
     "beta.step1": "Tap the download button above and wait for the APK to finish downloading.",
@@ -217,7 +217,7 @@
     "beta.talk.h3": "Tester talk",
     "beta.talk.p": "Report what you see, share tuning ideas, or ask other testers questions — the conversation lives here, right on this page.",
     "beta.talk.wait": "The community board opens together with the first public beta build.",
-    "beta.private": "Found a crash or a security issue? Please <a href=\"mailto:FoldFX@protonmail.com\">email it privately</a> instead of posting it publicly — thank you.",
+    "beta.private": "Found a crash or a security issue? Please <a href=\"mailto:foldfx.contact@gmail.com\">email it privately</a> instead of posting it publicly — thank you.",
     "beta.gate.h": "Request beta access",
     "beta.gate.p": "The beta is invite-only. Enter your email to request access — every request is reviewed by hand, and not everyone is accepted. Once you are approved, this same page unlocks the download.",
     "beta.gate.label": "Email address",
@@ -306,7 +306,7 @@
     "priv.9p": "If a future version of the App introduces features that change how information is handled — for example, optional cloud functionality — this policy will be updated to describe those changes before the corresponding update is released, and the \"effective date\" at the top of this page will be revised. Material changes will also be summarized in the App's release notes. Your continued use of the App after an updated policy takes effect constitutes acceptance of the revised policy.",
     "priv.10h": "10. Contact",
     "priv.10p": "If you have questions, concerns or requests regarding this Privacy Policy, contact the Developer:",
-    "priv.10l": "Email: <a href=\"mailto:FoldFX@protonmail.com\">FoldFX@protonmail.com</a>",
+    "priv.10l": "Email: <a href=\"mailto:foldfx.contact@gmail.com\">foldfx.contact@gmail.com</a>",
 
     /* ---------- terms of service ---------- */
     "terms.eyebrow": "Legal",
@@ -342,7 +342,7 @@
     "terms.11p": "We may update the App and these Terms from time to time. When these Terms change, the \"effective date\" at the top of this page will be revised, and continued use of the App after the new effective date constitutes acceptance of the updated Terms. If a change is material, we will also note it in the App's release notes. If you do not agree to updated Terms, you should stop using the App and uninstall it.",
     "terms.12h": "12. Contact",
     "terms.12p": "Questions about these Terms can be sent to the Developer:",
-    "terms.12l": "Email: <a href=\"mailto:FoldFX@protonmail.com\">FoldFX@protonmail.com</a>",
+    "terms.12l": "Email: <a href=\"mailto:foldfx.contact@gmail.com\">foldfx.contact@gmail.com</a>",
 
     /* ---------- 404 ---------- */
     "nf.p": "Looks like this page folded away.",
@@ -374,12 +374,12 @@
     "ty.verify.bad": "That key wasn't recognized. Double-check you copied the license key (not the invoice number) from 'Access purchase' in your Polar receipt.",
     "ty.verify.err": "We couldn't reach the payment service just now — your key is fine; try again in a moment.",
     "ty.verify.short": "That looks too short — a license key is a long code. Copy the full key from your Polar receipt.",
-    "ty.verify.revoked": "This key exists but is no longer active — usually because its payment was refunded. Email FoldFX@protonmail.com and we'll sort it out.",
+    "ty.verify.revoked": "This key exists but is no longer active — usually because its payment was refunded. Email foldfx.contact@gmail.com and we'll sort it out.",
     "ty.dl": "Download FoldFX (signed APK)",
     "ty.dl.note": "FoldFX-0.2.6-release.apk · Android 8.0+ · release-signed · verify against <a href=\\\"downloads/checksums.txt\\\">checksums.txt</a>",
-    "ty.dl.compat": "One honest note: FoldFX is still in beta and might have issues on some devices — hinge behavior, the live wallpaper and the experimental overlay can vary across foldable models and Android versions. If anything misbehaves, email FoldFX@protonmail.com — fixes ship as free updates.",
+    "ty.dl.compat": "One honest note: FoldFX is still in beta and might have issues on some devices — hinge behavior, the live wallpaper and the experimental overlay can vary across foldable models and Android versions. If anything misbehaves, email foldfx.contact@gmail.com — fixes ship as free updates.",
     "ty.migrate": "Already installed 0.2.5 or older? Uninstall it before this one — the release signing key was rotated again, and Android refuses in-place updates across signing identities. Your license key stays valid and re-activates on the same device.",
-    "ty.help": "Something went wrong? Email FoldFX@protonmail.com and we'll sort it out.",
+    "ty.help": "Something went wrong? Email foldfx.contact@gmail.com and we'll sort it out.",
     "ty.back": "Back to the homepage",
   };
 })(typeof window !== "undefined" ? window : globalThis);
